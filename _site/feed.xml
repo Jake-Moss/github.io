@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-05T23:27:33+10:00</updated><id>http://localhost:4000/feed.xml</id><entry><title type="html">Using org-mode with Jekyll</title><link href="http://localhost:4000/posts/first-post" rel="alternate" type="text/html" title="Using org-mode with Jekyll" /><published>2022-03-04T00:00:00+10:00</published><updated>2022-03-04T00:00:00+10:00</updated><id>http://localhost:4000/posts/first-post</id><content type="html" xml:base="http://localhost:4000/posts/first-post">&lt;p&gt;
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+        &lt;/p&gt;
+        &lt;div id=&quot;outline-container-orgc4a8a3c&quot; class=&quot;outline-2&quot;&gt;
+        &lt;h2 id=&quot;orgc4a8a3c&quot;&gt;&lt;span class=&quot;section-number-2&quot;&gt;1.&lt;/span&gt; Lorem ipsum&lt;/h2&gt;
+        &lt;div class=&quot;outline-text-2&quot; id=&quot;text-1&quot;&gt;
+        &lt;p&gt;
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+        &lt;/p&gt;
+        &lt;div class=&quot;org-src-container&quot;&gt;
+        &lt;pre class=&quot;src src-python&quot;&gt;&lt;span style=&quot;color: #c678dd;&quot;&gt;print&lt;/span&gt;(&lt;span style=&quot;color: #98be65;&quot;&gt;&quot;Hello there world&quot;&lt;/span&gt;)
+        &lt;/pre&gt;
+        &lt;/div&gt;
+        &lt;pre class=&quot;example&quot;&gt;
+        Hello there world
+        &lt;/pre&gt;
+        &lt;ol class=&quot;org-ol&quot;&gt;
+        &lt;li&gt;one&lt;/li&gt;
+        &lt;li&gt;two&lt;/li&gt;
+        &lt;li&gt;three&lt;/li&gt;
+        &lt;li&gt;four
+        sub-four&lt;/li&gt;
+        &lt;li&gt;five&lt;/li&gt;
+        &lt;/ol&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;</content><author><name></name></author><summary type="html">Utilising org-mode and jekyl together</summary></entry></feed>

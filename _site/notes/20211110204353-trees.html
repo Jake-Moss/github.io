@@ -1,0 +1,345 @@
+<!-------------------------------------------------------------------------------------
+*
+* MIT License
+* Copyright (c) 2020 Raghuveer S, Hiran Venugopalan, Asim K T
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE.
+*
+------------------------------------------------------------------------------------>
+<!DOCTYPE html>
+<html lang="en">
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+    
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+  <head>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Digital Garden" property="og:site_name" />
+    <meta
+        content="A Jekyll theme for Obsidian users to build digital garden"
+        property="og:description">
+      <meta content="http://localhost:4000/about/" property="article:author">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+        rel="stylesheet"><meta content="Trees" property="og:title">
+      <meta content="article" property="og:type">
+      <meta content="http://localhost:4000/notes/20211110204353-trees" property="og:url"><title>Jake Moss</title>
+      <link rel="canonical" href="http://localhost:4000/notes/20211110204353-trees" />
+      <link rel="apple-touch-icon" href="/assets/img/profile.png">
+      <link rel="icon" href="/assets/img/favicon.png" type="image/png" sizes="16x16" />
+      <link href="/assets/css/style.css" rel="stylesheet" media="all" class="default" />
+      <link href="/assets/css/main.css" rel="stylesheet" media="all" class="default" />
+      <link href="/assets/css/Util.css" rel="stylesheet" media="all" class="default" />
+      <link href="/assets/css/vendor/Katex.css" rel="stylesheet" media="all" class="default" />
+      <!--[if IE]>
+        <link href="/assets/css/ie-target.css" rel="stylesheet" type="text/css"/>
+      <![endif]-->
+      <!--<link href="/assets/css/prism.css" rel="stylesheet" />-->
+      <link rel="alternate" type="application/rss+xml" href="http://localhost:4000/feed.xml">
+    </head>
+    <body><nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="../index.html">
+            <svg width="32" height="32" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M36.9477 13.7742C38.3043 11.4086 41.6957 11.4086 43.0523 13.7742L70.5226 61.6774C71.8791 64.043 70.1834 67 67.4703 67H12.5297C9.81658 67 8.12089 64.043 9.47744 61.6774L36.9477 13.7742ZM40 16.9677L13.7506 62.7419H66.2494L40 16.9677Z" fill="var(--text-main)"/>
+            </svg>
+            <h4>Jake Moss</h4>
+          </a>
+          <div class="navbar-item navbar-dark-mode__mobile is-hidden-tablet" onclick="modeSwitcher()">
+            <div class="buttons">
+              <a class="button is-text">
+                <span class="icon is-small">
+                  <img src="../assets/img/sun.svg" id="theme-toggle-img--mobile">
+                </span>
+              </a>
+            </div>
+          </div>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a href="../posts"  class="navbar-item">
+              Posts
+            </a>
+            <a href="../notes"  class="navbar-item">
+              Notes
+            </a>
+            <a href="https://github.com/Jake-Moss" target="_blank" class="navbar-item">
+              GitHub
+            </a>
+            <a href="https://jekyllrb.com/" target="_blank"  class="navbar-item">
+              Jekyll
+            </a>
+            <a href="https://www.orgroam.com/"  target="_blank" class="navbar-item">
+              Org Roam
+            </a>
+          </div>
+          <div class="navbar-end is-hidden-mobile" onclick="modeSwitcher()" >
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-text">
+                  <span class="icon is-small">
+                    <img src="../assets/img/sun.svg" id="theme-toggle-img">
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <script src="/assets/js/Hamburger.js"></script>
+      <section class="section">
+        <div class="columns is-centered">
+          <!--- CASE 1 : Homepage--><!---CASE 2 : Notes & Blog Page-->
+          <div class="column is-three-fifths">
+            <main>
+              <div class="note-page-section">
+                <div class="buttons for-back-home"><a class="button is-text button__page-back" onclick="window.history.back();"><span class="icon is-small">
+                      <svg width="12" height="20" viewBox="0 0 12 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M11.0309 0.468998C11.1007 0.538667 11.1561 0.62143 11.1939 0.712548C11.2318 0.803665 11.2512 0.901347 11.2512 0.999998C11.2512 1.09865 11.2318 1.19633 11.1939 1.28745C11.1561 1.37857 11.1007 1.46133 11.0309 1.531L2.56038 10L11.0309 18.469C11.1717 18.6098 11.2508 18.8008 11.2508 19C11.2508 19.1992 11.1717 19.3902 11.0309 19.531C10.89 19.6718 10.699 19.7509 10.4999 19.7509C10.3007 19.7509 10.1097 19.6718 9.96887 19.531L0.968875 10.531C0.899031 10.4613 0.843616 10.3786 0.805806 10.2874C0.767997 10.1963 0.748535 10.0986 0.748535 10C0.748535 9.90135 0.767997 9.80367 0.805806 9.71255C0.843616 9.62143 0.899031 9.53867 0.968875 9.469L9.96887 0.468998C10.0385 0.399153 10.1213 0.343739 10.2124 0.305929C10.3035 0.26812 10.4012 0.248657 10.4999 0.248657C10.5985 0.248657 10.6962 0.26812 10.7873 0.305929C10.8784 0.343739 10.9612 0.399153 11.0309 0.468998Z"
+                                        fill="var(--text-main)" />
+                      </svg>
+                    </span>
+                  </a>
+                </div>
+                <h1>Trees</h1>
+                <!-- Parse internal links, external links, transclusions etc and manipuate the content to reflect it accordingly -->
+                <div class="content">
+                  <div id="table-of-contents" role="doc-toc">
+                    <h2>Table of Contents</h2>
+                    <div id="text-table-of-contents" role="doc-toc">
+                      <ul>
+                        <li><a href="#orgd6f5cee">1. Terminology and definitions</a>
+                          <ul>
+                            <li><a href="#orgef8510a">1.1. Binary trees</a></li>
+                            <li><a href="#org98e78a0">1.2. Heap</a></li>
+                            <li><a href="#org618c858">1.3. Binary Search Tree</a>
+                              <ul>
+                                <li><a href="#org6627359">1.3.1. Insertion</a></li>
+                                <li><a href="#org227c359">1.3.2. Deletion</a></li>
+                              </ul>
+                            </li>
+                            <li><a href="#org51e0f9d">1.4. AVL Tree</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div id="outline-container-orgd6f5cee" class="outline-2">
+                    <h2 id="orgd6f5cee"><span class="section-number-2">1.</span> Terminology and definitions</h2>
+                    <div class="outline-text-2" id="text-1">
+                      <ul class="org-ul">
+                        <li>Height of a tree is the length of the path from root of that tree to its farthest node (i.e. leaf node farthest from the root). A tree with only root node has height \(0\) and a tree with zero nodes would be considered as empty. An empty tree has height of \(-1 \)</li>
+                      </ul>
+                    </div>
+                    <div id="outline-container-orgef8510a" class="outline-3">
+                      <h3 id="orgef8510a"><span class="section-number-3">1.1.</span> Binary trees</h3>
+                      <div class="outline-text-3" id="text-1-1">
+                        <ul class="org-ul">
+                          <li>Each internal node has at most two children</li>
+                          <li>Exactly two for proper binary tree</li>
+                          <li>Level \(l\) is full is it contains \(2^l\) nodes</li>
+                          <li>A tree is <b>complete</b> if, for height \(h\), levels \(0\dots h -1\) are full and level \(h\) all leaf nodes are as far left as possible</li>
+                          <li>Height-Balance property: for every internal node \(v\), the heights of the children of \(v\) differ by at most \(1\)</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div id="outline-container-org98e78a0" class="outline-3">
+                      <h3 id="org98e78a0"><span class="section-number-3">1.2.</span> Heap</h3>
+                      <div class="outline-text-3" id="text-1-2">
+                        <p>
+                          Good for implementing 
+                        </p>
+                        <ul class="org-ul">
+                          <li>Must be complete binary tree</li>
+                          <li><b>Heap-Order</b>:
+                            For every internal node other than the root \(key(v) \geq key(parent(v))\)</li>
+                          <li><b>Last node</b> of a heap is the rightmost node of maximum depth</li>
+                          <li>A heap storing \(n\) keys has height \(O(log n)\)</li>
+                          <li>Insertion algorithm
+                            <ol class="org-ol">
+                              <li>Find the insertion node \(z\) new last node</li>
+                              <li>Store \(k\) at z</li>
+                              <li>Restore the heap-order property</li>
+                            </ol>
+                          </li>
+                          <li><b>Upheap</b> swaps \(k\) along an upward path from the insertion node, until \(k\) reaches the root or a node whose parent has a key less than or equal to \(k\)</li>
+                          <li>Removal algorithm
+                            <ol class="org-ol">
+                              <li>Replace the root key with the key of the last node \(w\)</li>
+                              <li>Remove \(w\)</li>
+                              <li>Restore the heap-order property</li>
+                            </ol>
+                          </li>
+                          <li><b>Downheap</b> replaces root key with key \(k\) of the last node and swaps key \(k\) along a downward path from the root
+                            <ul class="org-ul">
+                              <li>If a node has no right child, choose the left child</li>
+                              <li>If a node has both children, choose the one with the smallest key</li>
+                            </ul>
+                          </li>
+                          <li>Insertion heap construction runs in \(O(n \log n)\) time</li>
+                          <li>Bottom-up heap construction runs in \(O(n)\) time</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div id="outline-container-org618c858" class="outline-3">
+                      <h3 id="org618c858"><span class="section-number-3">1.3.</span> Binary Search Tree</h3>
+                      <div class="outline-text-3" id="text-1-3">
+                        <p>
+                          Binary tree storing keys (or key-value entries) at its internal nodes and satisfying the following property
+                        </p>
+                        <ul class="org-ul">
+                          <li>Let \(u\), \(v\) and \(w\) be three nodes such that \(u\) is in the left subtree of \(v\) and \(w\) is in the right subtree of \(v\). Such that \(key(u) \leq key(v) \leq key(w)\)</li>
+                          <li>In-order traversal of a binary search tree visits the keys in increasing order</li>
+                          <li>External nodes do not store items</li>
+                          <li>Search for key \(k\)
+                            <ul class="org-ul">
+                              <li>Trace a downward path starting at the root</li>
+                              <li>Next node visited depends on the comparison of \(k\) with the key of the current node
+                                <ul class="org-ul">
+                                  <li>If a leaf is reached, the key is not found</li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                        <div class="org-src-container">
+                          <pre class="src src-pseudocode">Algorithm TreeSearch(k, v):
+    if T.isExternal(v)
+        return v
+    if k &lt; key(v)
+        return TreeSearch(k, left(v))
+    else if k = key(v)
+        return v
+    else { k &gt;key(v) }
+        return TreeSearch(k, right(v))
+</pre>
+                        </div>
+                      </div>
+                      <div id="outline-container-org6627359" class="outline-4">
+                        <h4 id="org6627359"><span class="section-number-4">1.3.1.</span> Insertion</h4>
+                        <div class="outline-text-4" id="text-1-3-1">
+                          <p>
+                            <code>put(k, o)</code>
+                          </p>
+                          <ul class="org-ul">
+                            <li>Search for key k
+                              <ul class="org-ul">
+                                <li>Using <code>TreeSearch</code></li>
+                              </ul>
+                            </li>
+                            <li>Assume \(k\) is not already in the tree
+                              <ul class="org-ul">
+                                <li>\(w\) is the leaf reached by the search</li>
+                              </ul>
+                            </li>
+                            <li>Insert \(k\) at node \(w\) and expand \(w\) into an internal node</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div id="outline-container-org227c359" class="outline-4">
+                        <h4 id="org227c359"><span class="section-number-4">1.3.2.</span> Deletion</h4>
+                        <div class="outline-text-4" id="text-1-3-2">
+                          <p>
+                            <code>remove(k)</code>
+                          </p>
+                          <ul class="org-ul">
+                            <li>Search for key k
+                              <ul class="org-ul">
+                                <li>Using <code>TreeSearch</code></li>
+                              </ul>
+                            </li>
+                            <li>Assume key k is in the tree
+                              <ul class="org-ul">
+                                <li>\(v\) is the node storing k</li>
+                              </ul>
+                            </li>
+                            <li>If node \(v\) has a leaf child \(w\)
+                              <ul class="org-ul">
+                                <li>Remove \(v\) and \(w\) with <code>removeExternal(w)</code>
+                                  <ul class="org-ul">
+                                    <li>Removes \(w\) and its parent</li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                          <p>
+                            Consider the case where the key \(k\) to be removed is stored at a node \(v\) whose children are both internal
+                          </p>
+                          <ul class="org-ul">
+                            <li>Find internal node \(w\) that follows \(v\) in an <b>in-order</b> traversal</li>
+                            <li>Copy \(key(w)\) into node \(v\)</li>
+                            <li>Remove node \(w\) and its left child \(z\)
+                              <ul class="org-ul">
+                                <li>\(w\) must be a leaf</li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="outline-container-org51e0f9d" class="outline-3">
+                      <h3 id="org51e0f9d"><span class="section-number-3">1.4.</span> AVL Tree</h3>
+                      <div class="outline-text-3" id="text-1-4">
+                        <p>
+                          Balanced binary search tree
+                        </p>
+                        <ul class="org-ul">
+                          <li>Height of an AVL tree storing \(n\) keys is \(O(log n)\)</li>
+                          <li>Insertion is as in a binary search tree</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Add backlinks to the current page --></div>
+              <div id="copyright">
+                <p id="copyright-notice">Jake Moss. 2022, powered by <a href="https://github.com/Jekyll-Garden/jekyll-garden.github.io">Jekyll Garden</a></p>
+              </div>
+              <script src="/assets/js/modeswitcher.js"></script></main>
+          </div>
+          <!--- CASE 3 : Static Page --><!--- CASE 4 :  Blog Listing page --><!--- CASE 5 :  Notes Listing page --></div>
+      </section>
+    </body>
+  </html>
