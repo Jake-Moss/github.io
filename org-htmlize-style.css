@@ -1,0 +1,932 @@
+<style type="text/css">
+    <!--
+      body {
+        color: #000000;
+        background-color: #ffffff;
+      }
+      .org-abbrev-table-name {
+        /* abbrev-table-name */
+        font-weight: bold;
+      }
+      .org-ansi-color-black {
+        /* ansi-color-black */
+        color: #000000;
+        background-color: #000000;
+      }
+      .org-ansi-color-blue {
+        /* ansi-color-blue */
+        color: #0000ee;
+        background-color: #0000ee;
+      }
+      .org-ansi-color-bold {
+        /* ansi-color-bold */
+        font-weight: bold;
+      }
+      .org-ansi-color-bright-black {
+        /* ansi-color-bright-black */
+        color: #4d4d4d;
+        background-color: #4d4d4d;
+      }
+      .org-ansi-color-bright-blue {
+        /* ansi-color-bright-blue */
+        color: #0000ff;
+        background-color: #0000ff;
+      }
+      .org-ansi-color-bright-cyan {
+        /* ansi-color-bright-cyan */
+        color: #00eeee;
+        background-color: #00eeee;
+      }
+      .org-ansi-color-bright-green {
+        /* ansi-color-bright-green */
+        color: #00ee00;
+        background-color: #00ee00;
+      }
+      .org-ansi-color-bright-magenta {
+        /* ansi-color-bright-magenta */
+        color: #ee00ee;
+        background-color: #ee00ee;
+      }
+      .org-ansi-color-bright-red {
+        /* ansi-color-bright-red */
+        color: #ee0000;
+        background-color: #ee0000;
+      }
+      .org-ansi-color-bright-white {
+        /* ansi-color-bright-white */
+        color: #ffffff;
+        background-color: #ffffff;
+      }
+      .org-ansi-color-bright-yellow {
+        /* ansi-color-bright-yellow */
+        color: #eeee00;
+        background-color: #eeee00;
+      }
+      .org-ansi-color-cyan {
+        /* ansi-color-cyan */
+        color: #00cdcd;
+        background-color: #00cdcd;
+      }
+      .org-ansi-color-faint {
+      }
+      .org-ansi-color-fast-blink {
+      }
+      .org-ansi-color-green {
+        /* ansi-color-green */
+        color: #00cd00;
+        background-color: #00cd00;
+      }
+      .org-ansi-color-inverse {
+      }
+      .org-ansi-color-italic {
+        /* ansi-color-italic */
+        font-style: italic;
+      }
+      .org-ansi-color-magenta {
+        /* ansi-color-magenta */
+        color: #cd00cd;
+        background-color: #cd00cd;
+      }
+      .org-ansi-color-red {
+        /* ansi-color-red */
+        color: #cd0000;
+        background-color: #cd0000;
+      }
+      .org-ansi-color-slow-blink {
+      }
+      .org-ansi-color-underline {
+        /* ansi-color-underline */
+        text-decoration: underline;
+      }
+      .org-ansi-color-white {
+        /* ansi-color-white */
+        color: #e5e5e5;
+        background-color: #e5e5e5;
+      }
+      .org-ansi-color-yellow {
+        /* ansi-color-yellow */
+        color: #cdcd00;
+        background-color: #cdcd00;
+      }
+      .org-bold {
+        /* bold */
+        font-weight: bold;
+      }
+      .org-bold-italic {
+        /* bold-italic */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-border {
+      }
+      .org-bracket {
+      }
+      .org-browse-url-button {
+        /* browse-url-button */
+        text-decoration: underline;
+      }
+      .org-buffer-menu-buffer {
+        /* buffer-menu-buffer */
+        font-weight: bold;
+      }
+      .org-builtin {
+        /* font-lock-builtin-face */
+        font-weight: bold;
+      }
+      .org-button {
+        /* button */
+        text-decoration: underline;
+      }
+      .org-calendar-month-header {
+        /* calendar-month-header */
+        font-weight: bold;
+      }
+      .org-calendar-today {
+        /* calendar-today */
+        text-decoration: underline;
+      }
+      .org-calendar-weekday-header {
+        /* calendar-weekday-header */
+        font-weight: bold;
+        text-decoration: underline;
+      }
+      .org-calendar-weekend-header {
+        /* calendar-weekend-header */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-child-frame-border {
+      }
+      .org-comint-highlight-input {
+        /* comint-highlight-input */
+        font-weight: bold;
+      }
+      .org-comint-highlight-prompt {
+        /* comint-highlight-prompt */
+        color: #00ffff;
+      }
+      .org-comment {
+        /* font-lock-comment-face */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-comment-delimiter {
+        /* font-lock-comment-delimiter-face */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-completions-common-part {
+      }
+      .org-completions-first-difference {
+        /* completions-first-difference */
+        font-weight: bold;
+      }
+      .org-completions-group-separator {
+        /* completions-group-separator */
+        text-decoration: line-through;
+      }
+      .org-completions-group-title {
+        /* completions-group-title */
+        font-style: italic;
+      }
+      .org-completions-highlight {
+      }
+      .org-confusingly-reordered {
+        /* confusingly-reordered */
+        font-weight: bold;
+      }
+      .org-constant {
+        /* font-lock-constant-face */
+        font-weight: bold;
+        text-decoration: underline;
+      }
+      .org-cursor {
+        /* cursor */
+        background-color: #ffffff;
+      }
+      .org-delimiter {
+      }
+      .org-diary {
+        /* diary */
+        font-weight: bold;
+      }
+      .org-doc {
+        /* font-lock-doc-face */
+        font-style: italic;
+      }
+      .org-doc-markup {
+        /* font-lock-doc-markup-face */
+        font-weight: bold;
+        text-decoration: underline;
+      }
+      .org-eldoc-highlight-function-argument {
+        /* eldoc-highlight-function-argument */
+        font-weight: bold;
+      }
+      .org-elisp-shorthand-font-lock {
+        /* elisp-shorthand-font-lock-face */
+        color: #00ffff;
+        font-weight: bold;
+      }
+      .org-error {
+        /* error */
+        font-weight: bold;
+      }
+      .org-escape {
+        /* font-lock-escape-face */
+        font-weight: bold;
+      }
+      .org-escape-glyph {
+        /* escape-glyph */
+        color: #00ffff;
+      }
+      .org-file-name-shadow {
+      }
+      .org-fill-column-indicator {
+      }
+      .org-fixed-pitch {
+      }
+      .org-fixed-pitch-serif {
+      }
+      .org-fringe {
+        /* fringe */
+        background-color: #bebebe;
+      }
+      .org-function-call {
+        /* font-lock-function-call-face */
+        font-weight: bold;
+      }
+      .org-function-name {
+        /* font-lock-function-name-face */
+        font-weight: bold;
+      }
+      .org-glyphless-char {
+        /* glyphless-char */
+        color: #00ffff;
+        text-decoration: underline;
+      }
+      .org-header-line {
+        /* header-line */
+        text-decoration: underline;
+      }
+      .org-header-line-highlight {
+      }
+      .org-help-argument-name {
+        /* help-argument-name */
+        font-style: italic;
+      }
+      .org-help-for-help-header {
+        /* help-for-help-header */
+        font-size: 126%;
+      }
+      .org-help-key-binding {
+        /* help-key-binding */
+        background-color: #e5e5e5;
+      }
+      .org-highlight {
+      }
+      .org-holiday {
+      }
+      .org-homoglyph {
+        /* homoglyph */
+        color: #00ffff;
+      }
+      .org-icon {
+      }
+      .org-icon-button {
+      }
+      .org-internal-border {
+      }
+      .org-isearch {
+      }
+      .org-isearch-fail {
+      }
+      .org-isearch-group-1 {
+      }
+      .org-isearch-group-2 {
+      }
+      .org-italic {
+        /* italic */
+        font-style: italic;
+      }
+      .org-keyword {
+        /* font-lock-keyword-face */
+        font-weight: bold;
+      }
+      .org-lazy-highlight {
+        /* lazy-highlight */
+        text-decoration: underline;
+      }
+      .org-line-number-current-line {
+      }
+      .org-line-number-major-tick {
+      }
+      .org-line-number-minor-tick {
+      }
+      .org-link {
+        /* link */
+        text-decoration: underline;
+      }
+      .org-link-visited {
+        /* link-visited */
+        text-decoration: underline;
+      }
+      .org-match {
+      }
+      .org-menu {
+      }
+      .org-minibuffer-prompt {
+        /* minibuffer-prompt */
+        color: #00ffff;
+      }
+      .org-misc-punctuation {
+      }
+      .org-mode-line {
+      }
+      .org-mode-line-active {
+      }
+      .org-mode-line-buffer-id {
+        /* mode-line-buffer-id */
+        font-weight: bold;
+      }
+      .org-mode-line-emphasis {
+        /* mode-line-emphasis */
+        font-weight: bold;
+      }
+      .org-mode-line-highlight {
+      }
+      .org-mode-line-inactive {
+      }
+      .org-mouse {
+      }
+      .org-mouse-drag-and-drop-region {
+      }
+      .org-negation-char {
+      }
+      .org-next-error {
+      }
+      .org-next-error-message {
+      }
+      .org-nobreak-hyphen {
+        /* nobreak-hyphen */
+        color: #00ffff;
+      }
+      .org-nobreak-space {
+      }
+      .org-number {
+      }
+      .org-operator {
+      }
+      .org-org-agenda-calendar-event {
+      }
+      .org-org-agenda-calendar-sexp {
+      }
+      .org-org-agenda-clocking {
+      }
+      .org-org-agenda-column-dateline {
+      }
+      .org-org-agenda-current-time {
+      }
+      .org-org-agenda-date {
+        /* org-agenda-date */
+        font-weight: bold;
+      }
+      .org-org-agenda-date-today {
+        /* org-agenda-date-today */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-org-agenda-date-weekend {
+        /* org-agenda-date-weekend */
+        font-weight: bold;
+      }
+      .org-org-agenda-date-weekend-today {
+        /* org-agenda-date-weekend-today */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-org-agenda-diary {
+      }
+      .org-org-agenda-dimmed-todo {
+        /* org-agenda-dimmed-todo-face */
+        color: #7f7f7f;
+      }
+      .org-org-agenda-done {
+      }
+      .org-org-agenda-filter-category {
+      }
+      .org-org-agenda-filter-effort {
+      }
+      .org-org-agenda-filter-regexp {
+      }
+      .org-org-agenda-filter-tags {
+      }
+      .org-org-agenda-restriction-lock {
+      }
+      .org-org-agenda-structure {
+        /* org-agenda-structure */
+        font-weight: bold;
+      }
+      .org-org-agenda-structure-secondary {
+        /* org-agenda-structure-secondary */
+        font-weight: bold;
+      }
+      .org-org-archived {
+      }
+      .org-org-block {
+      }
+      .org-org-block-begin-line {
+        /* org-block-begin-line */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-org-block-end-line {
+        /* org-block-end-line */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-org-checkbox {
+        /* org-checkbox */
+        font-weight: bold;
+      }
+      .org-org-checkbox-statistics-done {
+        /* org-checkbox-statistics-done */
+        font-weight: bold;
+      }
+      .org-org-checkbox-statistics-todo {
+        /* org-checkbox-statistics-todo */
+        font-weight: bold;
+      }
+      .org-org-cite {
+        /* org-cite */
+        text-decoration: underline;
+      }
+      .org-org-cite-key {
+        /* org-cite-key */
+        text-decoration: underline;
+      }
+      .org-org-clock-overlay {
+      }
+      .org-org-code {
+      }
+      .org-org-column {
+      }
+      .org-org-column-title {
+      }
+      .org-org-date {
+        /* org-date */
+        text-decoration: underline;
+      }
+      .org-org-date-selected {
+      }
+      .org-org-default {
+      }
+      .org-org-dispatcher-highlight {
+        /* org-dispatcher-highlight */
+        font-weight: bold;
+      }
+      .org-org-document-info {
+      }
+      .org-org-document-info-keyword {
+      }
+      .org-org-document-title {
+        /* org-document-title */
+        font-weight: bold;
+      }
+      .org-org-done {
+        /* org-done */
+        font-weight: bold;
+      }
+      .org-org-drawer {
+        /* org-drawer */
+        font-weight: bold;
+      }
+      .org-org-ellipsis {
+        /* org-ellipsis */
+        text-decoration: line-through;
+      }
+      .org-org-footnote {
+        /* org-footnote */
+        text-decoration: underline;
+      }
+      .org-org-formula {
+        /* org-formula */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-org-headline-done {
+      }
+      .org-org-headline-todo {
+      }
+      .org-org-hide {
+        /* org-hide */
+        color: #000000;
+      }
+      .org-org-imminent-deadline {
+        /* org-imminent-deadline */
+        font-weight: bold;
+      }
+      .org-org-inline-src-block {
+      }
+      .org-org-latex-and-related {
+        /* org-latex-and-related */
+        text-decoration: underline;
+      }
+      .org-org-level-1 {
+        /* org-level-1 */
+        font-weight: bold;
+      }
+      .org-org-level-2 {
+        /* org-level-2 */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-org-level-3 {
+        /* org-level-3 */
+        font-weight: bold;
+      }
+      .org-org-level-4 {
+        /* org-level-4 */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-org-level-5 {
+        /* org-level-5 */
+        font-weight: bold;
+        text-decoration: underline;
+      }
+      .org-org-level-6 {
+        /* org-level-6 */
+        font-weight: bold;
+        text-decoration: underline;
+      }
+      .org-org-level-7 {
+        /* org-level-7 */
+        font-weight: bold;
+      }
+      .org-org-level-8 {
+        /* org-level-8 */
+        font-style: italic;
+      }
+      .org-org-link {
+        /* org-link */
+        text-decoration: underline;
+      }
+      .org-org-list-dt {
+        /* org-list-dt */
+        font-weight: bold;
+      }
+      .org-org-macro {
+        /* org-macro */
+        text-decoration: underline;
+      }
+      .org-org-meta-line {
+        /* org-meta-line */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-org-mode-line-clock {
+      }
+      .org-org-mode-line-clock-overrun {
+        /* org-mode-line-clock-overrun */
+        background-color: #ff0000;
+      }
+      .org-org-priority {
+        /* org-priority */
+        font-weight: bold;
+      }
+      .org-org-property-value {
+      }
+      .org-org-quote {
+      }
+      .org-org-scheduled {
+        /* org-scheduled */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-org-scheduled-previously {
+        /* org-scheduled-previously */
+        font-weight: bold;
+      }
+      .org-org-scheduled-today {
+        /* org-scheduled-today */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-org-sexp-date {
+        /* org-sexp-date */
+        text-decoration: underline;
+      }
+      .org-org-special-keyword {
+        /* org-special-keyword */
+        font-weight: bold;
+      }
+      .org-org-table {
+      }
+      .org-org-table-header {
+        /* org-table-header */
+        color: #000000;
+        background-color: #d3d3d3;
+      }
+      .org-org-tag {
+        /* org-tag */
+        font-weight: bold;
+      }
+      .org-org-tag-group {
+        /* org-tag-group */
+        font-weight: bold;
+      }
+      .org-org-target {
+        /* org-target */
+        text-decoration: underline;
+      }
+      .org-org-time-grid {
+      }
+      .org-org-todo {
+        /* org-todo */
+        font-weight: bold;
+      }
+      .org-org-upcoming-deadline {
+        /* org-upcoming-deadline */
+        font-weight: bold;
+      }
+      .org-org-upcoming-distant-deadline {
+      }
+      .org-org-verbatim {
+      }
+      .org-org-verse {
+      }
+      .org-org-warning {
+        /* org-warning */
+        font-weight: bold;
+      }
+      .org-outline-1 {
+        /* outline-1 */
+        font-weight: bold;
+      }
+      .org-outline-2 {
+        /* outline-2 */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-outline-3 {
+        /* outline-3 */
+        font-weight: bold;
+      }
+      .org-outline-4 {
+        /* outline-4 */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-outline-5 {
+        /* outline-5 */
+        font-weight: bold;
+        text-decoration: underline;
+      }
+      .org-outline-6 {
+        /* outline-6 */
+        font-weight: bold;
+        text-decoration: underline;
+      }
+      .org-outline-7 {
+        /* outline-7 */
+        font-weight: bold;
+      }
+      .org-outline-8 {
+        /* outline-8 */
+        font-style: italic;
+      }
+      .org-package-description {
+      }
+      .org-package-name {
+        /* package-name */
+        text-decoration: underline;
+      }
+      .org-package-status-avail-obso {
+        /* package-status-avail-obso */
+        font-weight: bold;
+      }
+      .org-package-status-available {
+      }
+      .org-package-status-built-in {
+        /* package-status-built-in */
+        font-weight: bold;
+      }
+      .org-package-status-dependency {
+        /* package-status-dependency */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-package-status-disabled {
+        /* package-status-disabled */
+        font-weight: bold;
+      }
+      .org-package-status-external {
+        /* package-status-external */
+        font-weight: bold;
+      }
+      .org-package-status-from-source {
+      }
+      .org-package-status-held {
+        /* package-status-held */
+        font-weight: bold;
+        text-decoration: underline;
+      }
+      .org-package-status-incompat {
+        /* package-status-incompat */
+        font-weight: bold;
+      }
+      .org-package-status-installed {
+        /* package-status-installed */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-package-status-unsigned {
+        /* package-status-unsigned */
+        font-weight: bold;
+      }
+      .org-preprocessor {
+        /* font-lock-preprocessor-face */
+        font-weight: bold;
+      }
+      .org-property-name {
+        /* font-lock-property-name-face */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-property-use {
+        /* font-lock-property-use-face */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-punctuation {
+      }
+      .org-query-replace {
+      }
+      .org-regexp {
+        /* font-lock-regexp-face */
+        font-style: italic;
+      }
+      .org-regexp-grouping-backslash {
+        /* font-lock-regexp-grouping-backslash */
+        font-weight: bold;
+      }
+      .org-regexp-grouping-construct {
+        /* font-lock-regexp-grouping-construct */
+        font-weight: bold;
+      }
+      .org-region {
+      }
+      .org-scroll-bar {
+      }
+      .org-secondary-selection {
+      }
+      .org-separator-line {
+        /* separator-line */
+        color: #228b22;
+        text-decoration: underline;
+      }
+      .org-shadow {
+      }
+      .org-show-paren-match {
+        /* show-paren-match */
+        text-decoration: underline;
+      }
+      .org-show-paren-match-expression {
+        /* show-paren-match-expression */
+        text-decoration: underline;
+      }
+      .org-show-paren-mismatch {
+      }
+      .org-string {
+        /* font-lock-string-face */
+        font-style: italic;
+      }
+      .org-success {
+        /* success */
+        font-weight: bold;
+      }
+      .org-tab-bar {
+        /* tab-bar */
+        background-color: #bebebe;
+      }
+      .org-tab-bar-tab {
+        /* tab-bar-tab */
+        background-color: #bebebe;
+      }
+      .org-tab-bar-tab-group-current {
+        /* tab-bar-tab-group-current */
+        background-color: #bebebe;
+        font-weight: bold;
+      }
+      .org-tab-bar-tab-inactive {
+        /* tab-bar-tab-inactive */
+        background-color: #bebebe;
+      }
+      .org-tab-line {
+        /* tab-line */
+        background-color: #bebebe;
+      }
+      .org-table-cell {
+        /* table-cell */
+        font-weight: bold;
+      }
+      .org-tabulated-list-fake-header {
+        /* tabulated-list-fake-header */
+        font-weight: bold;
+        text-decoration: underline;
+        text-decoration: overline;
+      }
+      .org-tool-bar {
+        /* tool-bar */
+        color: #000000;
+      }
+      .org-tooltip {
+      }
+      .org-trailing-whitespace {
+      }
+      .org-tty-menu-disabled {
+      }
+      .org-tty-menu-enabled {
+        /* tty-menu-enabled-face */
+        font-weight: bold;
+      }
+      .org-tty-menu-selected {
+      }
+      .org-type {
+        /* font-lock-type-face */
+        font-weight: bold;
+        text-decoration: underline;
+      }
+      .org-underline {
+        /* underline */
+        text-decoration: underline;
+      }
+      .org-variable-name {
+        /* font-lock-variable-name-face */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-variable-pitch {
+      }
+      .org-variable-pitch-text {
+        /* variable-pitch-text */
+        font-size: 110%;
+      }
+      .org-variable-use {
+        /* font-lock-variable-use-face */
+        font-weight: bold;
+        font-style: italic;
+      }
+      .org-vc-conflict-state {
+      }
+      .org-vc-edited-state {
+      }
+      .org-vc-locally-added-state {
+      }
+      .org-vc-locked-state {
+      }
+      .org-vc-missing-state {
+      }
+      .org-vc-needs-update-state {
+      }
+      .org-vc-removed-state {
+      }
+      .org-vc-state-base {
+      }
+      .org-vc-up-to-date-state {
+      }
+      .org-vertical-border {
+      }
+      .org-warning {
+        /* warning */
+        font-weight: bold;
+      }
+      .org-warning-1 {
+        /* font-lock-warning-face */
+        font-weight: bold;
+      }
+      .org-window-divider {
+        /* window-divider */
+        color: #999999;
+      }
+      .org-window-divider-first-pixel {
+        /* window-divider-first-pixel */
+        color: #cccccc;
+      }
+      .org-window-divider-last-pixel {
+        /* window-divider-last-pixel */
+        color: #666666;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+</style>
