@@ -1,0 +1,19 @@
+.small-text {
+    font-size: 12px;
+    margin-top: 0em;
+}
+
+.subpage-title {
+    margin-top: 2em;
+    margin-bottom: 0em;
+}
+
+.centred-container {
+  display: grid;
+  place-items: center;
+}
+
+body {
+    max-width: 100ch;
+    font-family: 'Libertinus', Georgia, Cambria, 'Times New Roman', Times, serif;
+}

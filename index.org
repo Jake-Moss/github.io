@@ -1,0 +1,30 @@
+The index page [[file:article.org][article page]]
+
+Here's a list of things on this page
+#+begin_src emacs-lisp :exports results :results value html
+  (string-join `("<div>" ,inline-html-publish-toc-marker "</div>") "\n")
+#+end_src
+
+#+RESULTS:
+#+begin_export html
+<div>
+<!-- Inline html toc marker -->
+</div>
+#+end_export
+
+Even got some math
+
+\begin{equation}
+\sum^n_{i=1} i^2
+\end{equation}
+
+#+begin_src emacs-lisp :exports results :results value html
+  (string-join `("<div>" ,inline-html-publish-subpage-marker "</div>") "\n")
+#+end_src
+
+#+RESULTS:
+#+begin_export html
+<div>
+<!-- Inline html subpage marker -->
+</div>
+#+end_export
