@@ -1,23 +1,9 @@
-;;; publish.el --- A publishing script
-
-;;; Commentary:
-;;
-
-;;; Code:
-
-;; emacs -Q --batch -l ./publish.el --funcall publish
-
-;; Initialize package sources
-(require 'package)
-
 (defvar base-directory (expand-file-name "~/Projects/github.io/"))
 (defvar public-directory (file-name-concat base-directory "docs"))
 
-(defvar inline-html-publish-index-subpages nil)
-(defvar inline-html-publish-toc-marker "<!-- Inline html toc marker -->")
-(defvar inline-html-publish-subpage-marker "<!-- Inline html subpage marker -->")
-(defvar inline-html-publish-page-format "<h1 class='subpage-title' id='%s'><a href='%s'>%s</a></h1>")
+(mkdir public-directory t)
 
+(require 'package)
 (setq package-user-dir (file-name-concat base-directory ".packages"))
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
@@ -29,13 +15,18 @@
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
-(require 'use-package)
 
+(require 'use-package)
 (require 'ox-publish)
 (require 'cl-lib)
 
 (use-package htmlize
   :ensure t)
+
+(defvar inline-html-publish-index-subpages nil)
+(defvar inline-html-publish-toc-marker "<!-- Inline html toc marker -->")
+(defvar inline-html-publish-subpage-marker "<!-- Inline html subpage marker -->")
+(defvar inline-html-publish-page-format "<h1 class='subpage-title' id='%s'><a href='%s'>%s</a></h1>")
 
 (setq org-html-head-include-default-style t
       org-html-preamble t
@@ -90,6 +81,39 @@ ATTRIBUTE-ALIST's key-value pairs are converted into HTML attributes."
        ,@body
        (insert (concat "</" ,tag ">")))))
 
+(defun inline-html-publish (plist filename pub-dir)
+  "Publish FILENAME into `inline-html-publish-index-subpages'.
+Stored as (timestamp output-filename title html-string).  Update the
+`:inline-components' in PLIST with `:inline-plist'.  PUB-DIR is
+ignored."
+  (interactive)
+  (let* ((org-inhibit-startup t)
+         (visiting (find-buffer-visiting filename))
+         (work-buffer (or visiting (find-file-noselect filename)))
+         (output-filename (org-publish-file-relative-name
+                           (file-name-with-extension filename ".html")
+                           plist))
+         (temp-buffer (generate-new-buffer " *temp*" t))
+         (title nil))
+    (with-current-buffer work-buffer
+      (setq title (org-get-title))
+      (org-export-to-buffer 'html temp-buffer nil nil nil t))
+
+    (with-current-buffer temp-buffer
+      (when title
+        (insert (format inline-html-publish-page-format
+                        title
+                        output-filename
+                        title)))
+      (push `(,(org-publish-cache-mtime-of-src filename)
+              ,output-filename
+              ,title
+              ,(buffer-string))
+            inline-html-publish-index-subpages))
+
+    (kill-buffer temp-buffer)
+    (unless visiting (kill-buffer work-buffer))))
+
 (defun inline-html-publish-index (plist filename pub-dir)
   "Build a mono-page from FILENAME and `inline-html-publish-index-subpages'.
 Merges the `:inline-plist' with the plist of `:inline-components' in PLIST"
@@ -101,8 +125,8 @@ Merges the `:inline-plist' with the plist of `:inline-components' in PLIST"
          (org-html-postamble-format `(("en" ,(concat
                                               "<p class=\"author\">Date: %T</p>"
                                               "<p class=\"author\">%c</p>"))))
-	     (visiting (find-buffer-visiting filename))
-	     (work-buffer (or visiting (find-file-noselect filename)))
+         (visiting (find-buffer-visiting filename))
+         (work-buffer (or visiting (find-file-noselect filename)))
          (output-filename (file-name-concat
                            pub-dir
                            (file-name-with-extension
@@ -131,10 +155,10 @@ Merges the `:inline-plist' with the plist of `:inline-components' in PLIST"
       (goto-char (point-min))
       (search-forward inline-html-publish-toc-marker)
       (with-tag "ul" nil
-        (cl-loop for (html-filename title html) in inline-html-publish-index-subpages do
-                 (with-tag "li" nil
-                           (with-tag "a" `(("href" . ,(concat "#" title)))
-                                     (insert title)))))
+                (cl-loop for (html-filename title html) in inline-html-publish-index-subpages do
+                         (with-tag "li" nil
+                                   (with-tag "a" `(("href" . ,(concat "#" title)))
+                                             (insert title)))))
 
       (goto-char (point-min))
       (search-forward inline-html-publish-subpage-marker)
@@ -145,43 +169,3 @@ Merges the `:inline-plist' with the plist of `:inline-components' in PLIST"
 
     (kill-buffer html-buffer)
     (unless visiting (kill-buffer work-buffer))))
-
-(defun inline-html-publish (plist filename pub-dir)
-  "Publish FILENAME into `inline-html-publish-index-subpages'.
-Stored as (timestamp output-filename title html-string).  Update the
-`:inline-components' in PLIST with `:inline-plist'.  PUB-DIR is
-ignored."
-  (interactive)
-  (let* ((org-inhibit-startup t)
-	     (visiting (find-buffer-visiting filename))
-	     (work-buffer (or visiting (find-file-noselect filename)))
-         (output-filename (org-publish-file-relative-name (file-name-with-extension filename ".html") plist))
-         (temp-buffer (generate-new-buffer " *temp*" t))
-         (title nil))
-    (with-current-buffer work-buffer
-      (setq title (org-get-title))
-      (org-export-to-buffer 'html temp-buffer nil nil nil t))
-
-    (with-current-buffer temp-buffer
-      (when title
-        (insert (format inline-html-publish-page-format
-                        title
-                        output-filename
-                        title)))
-      (push `(,(org-publish-cache-mtime-of-src filename)
-              ,output-filename
-              ,title
-              ,(buffer-string))
-            inline-html-publish-index-subpages))
-
-    (kill-buffer temp-buffer)
-    (unless visiting (kill-buffer work-buffer))))
-
-(defun publish ()
-  (interactive)
-  ;; (org-html-htmlize-generate-css)
-  ;; (write-region nil nil "org-htmlize-style.css")
-  (org-publish "site" t))
-
-(provide 'publish)
-;;; publish.el ends here
