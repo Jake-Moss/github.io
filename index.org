@@ -1,6 +1,16 @@
 #+OPTIONS: title:nil
 #+title:Jake Moss --- Mono-page
-The index page [[file:article.org][article page]]
+
+#+begin_export html
+<div class='centred-container'>
+<div class='abstract'>
+  <h2>About me</h2>
+  I'm a Computer Science Honours student at the University of Queensland interested in high performance computing, lisps, and functional programming. I mainly write Cython in Emacs for my day job and am working computer algebra systems for my thesis. 
+</div>
+</div>
+#+end_export
+
+This is a mono-page of everything here (although not much). I prefer being able to scroll and search through web pages in their entirety.
 
 Here's a list of things on this page
 #+begin_src emacs-lisp :exports results :results value html
@@ -14,11 +24,7 @@ Here's a list of things on this page
 </div>
 #+end_export
 
-Even got some math
-
-\begin{equation}
-\sum^n_{i=1} i^2
-\end{equation}
+Pages can be narrowed to by clicking on their respective titles.
 
 #+begin_src emacs-lisp :exports results :results value html
   (string-join `("<div>" ,inline-html-publish-subpage-marker "</div>") "\n")
@@ -30,3 +36,5 @@ Even got some math
 <!-- Inline html subpage marker -->
 </div>
 #+end_export
+
+Something's in =org-publish= are just hard coded and you cannot configure them, one such thing is the detection of $\LaTeX$ fragments to determine if the =mathjax= scripts should be included. Because I'm inserting the subpages myself the =mathjax= scripts in them don't apply. So there's one down here to make sure they work on the mono-page.

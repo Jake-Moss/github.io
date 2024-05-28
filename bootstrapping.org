@@ -14,22 +14,22 @@ At the core of Pollen is an argument:
 --- Matthew Butterick, Pollen: the book is a program
 #+end_quote
 
-While it clearly states that it's for digital books, it targets =HTML= and looked pretty cool so I gave it a shot. If you've seen the bottom of this page you may notice it was created with =org-mode=, so clearly the =pollen= attempt didn't make it. While it's a very cool system, I had issues with the export behaving oddly, paragraph tags were showing up where they shouldn't have and it became difficult to fine tune the export, despite having immense control of the output with the [[https://docs.racket-lang.org/pollen/third-tutorial.html][=pollen markup=]] format. As a templating system, the [[https://docs.racket-lang.org/pollen/first-tutorial.html#(part._.Inserting_variables_within_.C.S.S)][=pollen preprocessor=]] could be quite nice. I can see being able to inject arbitrary Racket code into anything text-based as something somebody needs for some reason.
+While it clearly states that it's for digital books, it targets =HTML= and looked pretty cool so I gave it a shot. If you've seen the bottom of this page you may notice it was created with =org-mode=, so clearly, the =pollen= attempt didn't make it. While it's a very cool system, I had issues with the export behaving oddly, paragraph tags were showing up where they shouldn't have and it became difficult to fine-tune the export, despite having immense control of the output with the [[https://docs.racket-lang.org/pollen/third-tutorial.html][=pollen markup=]] format. As a templating system, the [[https://docs.racket-lang.org/pollen/first-tutorial.html#(part._.Inserting_variables_within_.C.S.S)][=pollen preprocessor=]] could be quite nice. I can see being able to inject arbitrary Racket code into anything text-based as something somebody needs for some reason.
 
 * So what's so special about this?
-Well not much. I've used a lot of =org-mode= in the past, even attempted to do this once before. It's quite a nice markup language, I've personally used it for organising notes, managing TODO lists, planning projects, and writing assignments, scheduling, agenda views, tagging, and exporting to various formats. It also supports literate programming, tables, and extensive customisation with Emacs Lisp. The literate programming has been quite useful for assignments that require lots of in-document code and outputs.
+Well not much. I've used a lot of =org-mode= in the past and even attempted to do this once before. It's quite a nice markup language, I've personally used it for organising notes, managing TODO lists, planning projects, writing assignments, scheduling, agenda views, tagging, and exporting to various formats. It also supports literate programming, tables, and extensive customisation with Emacs Lisp. The literate programming has been quite useful for assignments that require lots of in-document code and outputs.
 
-One thing that =org-mode= has that I think =markdown= and other variants lack is the extensibility. Don't get me wrong, there are a ton of tools that can process =markdown= and spit out something useful that are plenty configurable. But =org-mode= is first and foremost a part of Emacs. That means it comes with Emacs extensibility, which, in my opinion, is light years beyond anything else. And something that I'll talk more about later on this page.
+One thing that =org-mode= has that I think =markdown= and other variants lack is the extensibility. Don't get me wrong, there are a ton of tools that can process =markdown= and spit out something useful that is plenty configurable. But =org-mode= is first and foremost a part of Emacs. That means it comes with Emac's extensibility, which, in my opinion, is lightyears beyond anything else. And something that I'll talk more about later on this page.
 
 * =org-export= and =org-publish=
 My lecturers certainly aren't interested in reading my assignments in a plain-text markup language almost exclusively supported by a [[https://www.gnu.org/software/emacs/][text editor first released in 1985]]. Fortunately, =org-mode= has excellent support exporting documents to other formats including =HTML=, and $\LaTeX$. On top of this =org-publish= adds support for processes a set of files, potentiality exporting, and publishing them. These systems are highly configurable and featureful.
 
-All pages here (including the mono-page) are generated from a set of =.org= files, published via the =org-html-publish-to-html= function, smeared with a little =CSS= [[https://latex.vercel.app][that isn't mine]], then thrown up on a [[https://github.com/Jake-Moss/github.io][github.io]] page. All-in-all it was about an evenings work to learn how the =org-publish= system worked, experiment, and polish to just what I had in mind.
+All pages here (including the mono-page) are generated from a set of =.org= files, published via the =org-html-publish-to-html= function, smeared with a little =CSS= [[https://latex.vercel.app][that isn't mine]], then thrown up on a [[https://github.com/Jake-Moss/github.io][github.io]] page. All in all it was about an evening's work to learn how the =org-publish= system worked, experiment, and polish to just what I had in mind.
 
 * What about the so-called publishing script being an article?
-Yeah so this article isn't /really/ the publishing script. Specifically the =bootstrappaing.org= file is /tangled/ to =publish.el=, which is then executed.
+Yeah, so this article isn't /really/ the publishing script. Specifically the =bootstrappaing.org= file is /tangled/ to =publish.el=, which is then executed. Tangling is the process of extracting source code from a document expanding, merging, and transforming it. Org then recomposes them into one or more separate files.
 
-But it didn't use to be like that. To bootstrap the page I wrote a bog-standard =.el= file and could be loaded and executed from the command-line to publish the page during testing,
+But it didn't use to be like that. To bootstrap the page I wrote a bog-standard =.el= file that could be loaded and executed from the command line to publish the page during testing,
 #+begin_src sh
   emacs -Q --batch -l publish.el --funcall publish
 #+end_src
@@ -40,9 +40,8 @@ During the writing of this article, I'm moving everything into here. Then I'll b
 which isn't much of a change to be fair, but it's the principle that matters.
 
 * The meat of it
-So lets get into it.
 ** Setup, packages, and variables
-First we'll do some house keeping, I don't want these packages in my main =init.el=, so we'll move the package directory and =require= the built in things I'll need.
+First, we'll do some house keeping, I don't want these packages in my main =init.el=, so we'll move the package directory and =require= the built-in things I'll need.
 #+begin_src emacs-lisp
   (defvar base-directory (expand-file-name "~/Projects/github.io/"))
   (defvar public-directory (file-name-concat base-directory "docs"))
@@ -70,8 +69,8 @@ First we'll do some house keeping, I don't want these packages in my main =init.
     :ensure t)
 #+end_src
 
-I use a few custom variables as well. =inline-html-publish-index-subpages= is a bit interesting, because I wanted to generate a mono-page as well as the individual pages I need to have a custom publishing function and I need to store the subpages for addition to the mono-page.
-The =-marker= variables are used to mark where some the table of contents and subpages should be inserted. It's a bit of a hack I know I know but it works just fine.
+I use a few custom variables as well. =inline-html-publish-index-subpages= is a bit interesting because I wanted to generate a mono-page as well as the individual pages I need to have a custom publishing function and I need to store the subpages for addition to the mono-page.
+The =-marker= variables are used to mark where some of the table of contents and subpages should be inserted. It's a bit of a hack I know I know but it works just fine.
 #+begin_src emacs-lisp
   (defvar inline-html-publish-index-subpages nil)
   (defvar inline-html-publish-toc-marker "<!-- Inline html toc marker -->")
@@ -94,7 +93,7 @@ I also need to configure some generic =org-html= variables.
 The real meat of the =org-publish= system is the =org-publish-project-alist= variable, it defines what files should be published and how with some knobs to fiddle with. This is a pretty boring one, we only have
 - ="contens":= recursively publish any file ending in =.org= (except =index.org=) in the =base-directory= to the =public-directory= with the =org-html-publish-to-html= function.
 - ="static":= just copies some common resources to the =public-directory=.
-- ="index":= is a little more interesting. It's very similar to ="contens"= but use my =inline-html-publish-index= function to publish the =index.org= file.
+- ="index":= is a little more interesting. It's very similar to ="contents"= but use my =inline-html-publish-index= function to publish the =index.org= file.
 #+begin_src emacs-lisp
   (setq org-publish-project-alist
         `(("contents"
@@ -145,7 +144,7 @@ I wrote a small helper macro to make writing some =HTML= tags easier. It's not p
          (insert (concat "</" ,tag ">")))))
 #+end_src
 
-The previously mentioned =inline-html-publish= function works by getting the to-be-published file and exporting it as =HTML= into a temp buffer, adding some =HTML= to the top via a format string, then plopping that plus some meta data into the =inline-html-publish-index-subpages= variable.
+The previously mentioned =inline-html-publish= function works by getting the to-be-published file and exporting it as =HTML= into a temp buffer, adding some =HTML= to the top via a format string, then plopping that plus some metadata into the =inline-html-publish-index-subpages= variable.
 #+begin_src emacs-lisp
   (defun inline-html-publish (plist filename pub-dir)
     "Publish FILENAME into `inline-html-publish-index-subpages'.
@@ -181,16 +180,14 @@ The previously mentioned =inline-html-publish= function works by getting the to-
       (unless visiting (kill-buffer work-buffer))))
 #+end_src
 
-To the "publish" the =index.org= file I use my =inline-html-publish-index= function. It first merges the properties for the components from =:inline-components= with =:inline-plist= and does some other setup related tasks. Then publishes the =index.org= file to the =html-buffer= buffer, followed up publishing the =:inline-components= with the now updated project alist.
+To the "publish" the =index.org= file I use my =inline-html-publish-index= function. It first merges the properties for the components from =:inline-components= with =:inline-plist= and does some other setup-related tasks. Then publishes the =index.org= file to the =html-buffer= buffer, followed up publishing the =:inline-components= with the now updated project alist.
 #+begin_src emacs-lisp
   (defun inline-html-publish-index (plist filename pub-dir)
     "Build a mono-page from FILENAME and `inline-html-publish-index-subpages'.
   Merges the `:inline-plist' with the plist of `:inline-components' in PLIST"
     (interactive)
     (let* ((org-inhibit-startup t)
-           (org-html-preamble-format `(("en" ,(concat
-                                               "<h1 class='author'>%a</h1>"
-                                               "<div class='abstract'><h2>About me</h2>test</div>"))))
+           (org-html-preamble-format `(("en" "<h1 class='author'>%a</h1>")))
            (org-html-postamble-format `(("en" ,(concat
                                                 "<p class=\"author\">Date: %T</p>"
                                                 "<p class=\"author\">%c</p>"))))
@@ -239,12 +236,12 @@ To the "publish" the =index.org= file I use my =inline-html-publish-index= funct
       (kill-buffer html-buffer)
       (unless visiting (kill-buffer work-buffer))))
 #+end_src
-The =:inline-components= use the =inline-html-publish= function which populates the =inline-html-publish-index-subpages= variable. That's sorted and the timestamps tripped out. It then finds the markers within the html buffer and inserts the relevant content.
+The =:inline-components= uses the =inline-html-publish= function which populates the =inline-html-publish-index-subpages= variable. That's sorted and the timestamps tripped out. It then finds the markers within the html buffer and inserts the relevant content.
 
 And that's it.
 
 I think it works quite well and just shows how extensive the =org-publish= system is.
 
 ** Wait wait where did those markers come from?
-Oh yeah, they are just embedded as exported =HTML= blocks in the =index.org= file. Here's what that looks like
+Oh yeah, they're just embedded as exported =HTML= blocks in the =index.org= file. Here's what that looks like
 #+include: index.org src org

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-05-29 Wed 00:36 -->
+<!-- 2024-05-29 Wed 01:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The article is the publishing script?</title>
@@ -269,18 +269,18 @@ At the core of Pollen is an argument:
 </blockquote>
 
 <p>
-While it clearly states that it's for digital books, it targets <code>HTML</code> and looked pretty cool so I gave it a shot. If you've seen the bottom of this page you may notice it was created with <code>org-mode</code>, so clearly the <code>pollen</code> attempt didn't make it. While it's a very cool system, I had issues with the export behaving oddly, paragraph tags were showing up where they shouldn't have and it became difficult to fine tune the export, despite having immense control of the output with the <a href="https://docs.racket-lang.org/pollen/third-tutorial.html"><code>pollen markup</code></a> format. As a templating system, the <a href="https://docs.racket-lang.org/pollen/first-tutorial.html#(part._.Inserting_variables_within_.C.S.S)"><code>pollen preprocessor</code></a> could be quite nice. I can see being able to inject arbitrary Racket code into anything text-based as something somebody needs for some reason.
+While it clearly states that it's for digital books, it targets <code>HTML</code> and looked pretty cool so I gave it a shot. If you've seen the bottom of this page you may notice it was created with <code>org-mode</code>, so clearly, the <code>pollen</code> attempt didn't make it. While it's a very cool system, I had issues with the export behaving oddly, paragraph tags were showing up where they shouldn't have and it became difficult to fine-tune the export, despite having immense control of the output with the <a href="https://docs.racket-lang.org/pollen/third-tutorial.html"><code>pollen markup</code></a> format. As a templating system, the <a href="https://docs.racket-lang.org/pollen/first-tutorial.html#(part._.Inserting_variables_within_.C.S.S)"><code>pollen preprocessor</code></a> could be quite nice. I can see being able to inject arbitrary Racket code into anything text-based as something somebody needs for some reason.
 </p>
 
 <div id="outline-container-orgc70f1cb" class="outline-2">
 <h2 id="orgc70f1cb"><span class="section-number-2">1.</span> So what's so special about this?</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Well not much. I've used a lot of <code>org-mode</code> in the past, even attempted to do this once before. It's quite a nice markup language, I've personally used it for organising notes, managing TODO lists, planning projects, and writing assignments, scheduling, agenda views, tagging, and exporting to various formats. It also supports literate programming, tables, and extensive customisation with Emacs Lisp. The literate programming has been quite useful for assignments that require lots of in-document code and outputs.
+Well not much. I've used a lot of <code>org-mode</code> in the past and even attempted to do this once before. It's quite a nice markup language, I've personally used it for organising notes, managing TODO lists, planning projects, writing assignments, scheduling, agenda views, tagging, and exporting to various formats. It also supports literate programming, tables, and extensive customisation with Emacs Lisp. The literate programming has been quite useful for assignments that require lots of in-document code and outputs.
 </p>
 
 <p>
-One thing that <code>org-mode</code> has that I think <code>markdown</code> and other variants lack is the extensibility. Don't get me wrong, there are a ton of tools that can process <code>markdown</code> and spit out something useful that are plenty configurable. But <code>org-mode</code> is first and foremost a part of Emacs. That means it comes with Emacs extensibility, which, in my opinion, is light years beyond anything else. And something that I'll talk more about later on this page.
+One thing that <code>org-mode</code> has that I think <code>markdown</code> and other variants lack is the extensibility. Don't get me wrong, there are a ton of tools that can process <code>markdown</code> and spit out something useful that is plenty configurable. But <code>org-mode</code> is first and foremost a part of Emacs. That means it comes with Emac's extensibility, which, in my opinion, is lightyears beyond anything else. And something that I'll talk more about later on this page.
 </p>
 </div>
 </div>
@@ -293,7 +293,7 @@ My lecturers certainly aren't interested in reading my assignments in a plain-te
 </p>
 
 <p>
-All pages here (including the mono-page) are generated from a set of <code>.org</code> files, published via the <code>org-html-publish-to-html</code> function, smeared with a little <code>CSS</code> <a href="https://latex.vercel.app">that isn't mine</a>, then thrown up on a <a href="https://github.com/Jake-Moss/github.io">github.io</a> page. All-in-all it was about an evenings work to learn how the <code>org-publish</code> system worked, experiment, and polish to just what I had in mind.
+All pages here (including the mono-page) are generated from a set of <code>.org</code> files, published via the <code>org-html-publish-to-html</code> function, smeared with a little <code>CSS</code> <a href="https://latex.vercel.app">that isn't mine</a>, then thrown up on a <a href="https://github.com/Jake-Moss/github.io">github.io</a> page. All in all it was about an evening's work to learn how the <code>org-publish</code> system worked, experiment, and polish to just what I had in mind.
 </p>
 </div>
 </div>
@@ -302,11 +302,11 @@ All pages here (including the mono-page) are generated from a set of <code>.org<
 <h2 id="orgf0787d0"><span class="section-number-2">3.</span> What about the so-called publishing script being an article?</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-Yeah so this article isn't <i>really</i> the publishing script. Specifically the <code>bootstrappaing.org</code> file is <i>tangled</i> to <code>publish.el</code>, which is then executed.
+Yeah, so this article isn't <i>really</i> the publishing script. Specifically the <code>bootstrappaing.org</code> file is <i>tangled</i> to <code>publish.el</code>, which is then executed. Tangling is the process of extracting source code from a document expanding, merging, and transforming it. Org then recomposes them into one or more separate files.
 </p>
 
 <p>
-But it didn't use to be like that. To bootstrap the page I wrote a bog-standard <code>.el</code> file and could be loaded and executed from the command-line to publish the page during testing,
+But it didn't use to be like that. To bootstrap the page I wrote a bog-standard <code>.el</code> file that could be loaded and executed from the command line to publish the page during testing,
 </p>
 <div class="org-src-container">
 <pre class="src src-sh">emacs -Q --batch -l publish.el --funcall publish
@@ -328,15 +328,12 @@ which isn't much of a change to be fair, but it's the principle that matters.
 <div id="outline-container-org1408da0" class="outline-2">
 <h2 id="org1408da0"><span class="section-number-2">4.</span> The meat of it</h2>
 <div class="outline-text-2" id="text-4">
-<p>
-So lets get into it.
-</p>
 </div>
 <div id="outline-container-org8f00708" class="outline-3">
 <h3 id="org8f00708"><span class="section-number-3">4.1.</span> Setup, packages, and variables</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
-First we'll do some house keeping, I don't want these packages in my main <code>init.el</code>, so we'll move the package directory and <code>require</code> the built in things I'll need.
+First, we'll do some house keeping, I don't want these packages in my main <code>init.el</code>, so we'll move the package directory and <code>require</code> the built-in things I'll need.
 </p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">base-directory</span> (expand-file-name <span class="org-string">"~/Projects/github.io/"</span>))
@@ -367,8 +364,8 @@ First we'll do some house keeping, I don't want these packages in my main <code>
 </div>
 
 <p>
-I use a few custom variables as well. <code>inline-html-publish-index-subpages</code> is a bit interesting, because I wanted to generate a mono-page as well as the individual pages I need to have a custom publishing function and I need to store the subpages for addition to the mono-page.
-The <code>-marker</code> variables are used to mark where some the table of contents and subpages should be inserted. It's a bit of a hack I know I know but it works just fine.
+I use a few custom variables as well. <code>inline-html-publish-index-subpages</code> is a bit interesting because I wanted to generate a mono-page as well as the individual pages I need to have a custom publishing function and I need to store the subpages for addition to the mono-page.
+The <code>-marker</code> variables are used to mark where some of the table of contents and subpages should be inserted. It's a bit of a hack I know I know but it works just fine.
 </p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">inline-html-publish-index-subpages</span> nil)
@@ -399,7 +396,7 @@ The real meat of the <code>org-publish</code> system is the <code>org-publish-pr
 <ul class="org-ul">
 <li><code>"contens":</code> recursively publish any file ending in <code>.org</code> (except <code>index.org</code>) in the <code>base-directory</code> to the <code>public-directory</code> with the <code>org-html-publish-to-html</code> function.</li>
 <li><code>"static":</code> just copies some common resources to the <code>public-directory</code>.</li>
-<li><code>"index":</code> is a little more interesting. It's very similar to <code>"contens"</code> but use my <code>inline-html-publish-index</code> function to publish the <code>index.org</code> file.</li>
+<li><code>"index":</code> is a little more interesting. It's very similar to <code>"contents"</code> but use my <code>inline-html-publish-index</code> function to publish the <code>index.org</code> file.</li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> org-publish-project-alist
@@ -462,7 +459,7 @@ I wrote a small helper macro to make writing some <code>HTML</code> tags easier.
 </div>
 
 <p>
-The previously mentioned <code>inline-html-publish</code> function works by getting the to-be-published file and exporting it as <code>HTML</code> into a temp buffer, adding some <code>HTML</code> to the top via a format string, then plopping that plus some meta data into the <code>inline-html-publish-index-subpages</code> variable.
+The previously mentioned <code>inline-html-publish</code> function works by getting the to-be-published file and exporting it as <code>HTML</code> into a temp buffer, adding some <code>HTML</code> to the top via a format string, then plopping that plus some metadata into the <code>inline-html-publish-index-subpages</code> variable.
 </p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">inline-html-publish</span> (plist filename pub-dir)
@@ -501,7 +498,7 @@ The previously mentioned <code>inline-html-publish</code> function works by gett
 </div>
 
 <p>
-To the "publish" the <code>index.org</code> file I use my <code>inline-html-publish-index</code> function. It first merges the properties for the components from <code>:inline-components</code> with <code>:inline-plist</code> and does some other setup related tasks. Then publishes the <code>index.org</code> file to the <code>html-buffer</code> buffer, followed up publishing the <code>:inline-components</code> with the now updated project alist.
+To the "publish" the <code>index.org</code> file I use my <code>inline-html-publish-index</code> function. It first merges the properties for the components from <code>:inline-components</code> with <code>:inline-plist</code> and does some other setup-related tasks. Then publishes the <code>index.org</code> file to the <code>html-buffer</code> buffer, followed up publishing the <code>:inline-components</code> with the now updated project alist.
 </p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">inline-html-publish-index</span> (plist filename pub-dir)
@@ -509,9 +506,7 @@ To the "publish" the <code>index.org</code> file I use my <code>inline-html-publ
 <span class="org-doc">Merges the `</span><span class="org-doc"><span class="org-constant">:inline-plist</span></span><span class="org-doc">' with the plist of `</span><span class="org-doc"><span class="org-constant">:inline-components</span></span><span class="org-doc">' in PLIST"</span>
   (<span class="org-keyword">interactive</span>)
   (<span class="org-keyword">let*</span> ((org-inhibit-startup t)
-         (org-html-preamble-format `((<span class="org-string">"en"</span> ,(concat
-                                             <span class="org-string">"&lt;h1 class='</span><span class="org-string"><span class="org-constant">author</span></span><span class="org-string">'&gt;%a&lt;/h1&gt;"</span>
-                                             <span class="org-string">"&lt;div class='</span><span class="org-string"><span class="org-constant">abstract</span></span><span class="org-string">'&gt;&lt;h2&gt;About me&lt;/h2&gt;test&lt;/div&gt;"</span>))))
+         (org-html-preamble-format `((<span class="org-string">"en"</span> <span class="org-string">"&lt;h1 class='</span><span class="org-string"><span class="org-constant">author</span></span><span class="org-string">'&gt;%a&lt;/h1&gt;"</span>)))
          (org-html-postamble-format `((<span class="org-string">"en"</span> ,(concat
                                               <span class="org-string">"&lt;p class=\"author\"&gt;Date: %T&lt;/p&gt;"</span>
                                               <span class="org-string">"&lt;p class=\"author\"&gt;%c&lt;/p&gt;"</span>))))
@@ -562,7 +557,7 @@ To the "publish" the <code>index.org</code> file I use my <code>inline-html-publ
 </pre>
 </div>
 <p>
-The <code>:inline-components</code> use the <code>inline-html-publish</code> function which populates the <code>inline-html-publish-index-subpages</code> variable. That's sorted and the timestamps tripped out. It then finds the markers within the html buffer and inserts the relevant content.
+The <code>:inline-components</code> uses the <code>inline-html-publish</code> function which populates the <code>inline-html-publish-index-subpages</code> variable. That's sorted and the timestamps tripped out. It then finds the markers within the html buffer and inserts the relevant content.
 </p>
 
 <p>
@@ -579,12 +574,22 @@ I think it works quite well and just shows how extensive the <code>org-publish</
 <h3 id="org6a7f8bb"><span class="section-number-3">4.3.</span> Wait wait where did those markers come from?</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
-Oh yeah, they are just embedded as exported <code>HTML</code> blocks in the <code>index.org</code> file. Here's what that looks like
+Oh yeah, they're just embedded as exported <code>HTML</code> blocks in the <code>index.org</code> file. Here's what that looks like
 </p>
 <div class="org-src-container">
 <pre class="src src-org"><span class="org-org-meta-line">#+OPTIONS: title:nil</span>
 <span class="org-org-document-info-keyword">#+title:</span><span class="org-org-document-title">Jake Moss --- Mono-page</span>
-The index page <span class="org-org-link"><a href="file:article.org">article page</a></span>
+
+<span class="org-org-block-begin-line">#+begin_export html</span>
+<span class="org-org-block">&lt;</span><span class="org-org-block"><span class="org-function-name">div</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-variable-name">class</span></span><span class="org-org-block">=</span><span class="org-org-block"><span class="org-string">'centred-container'</span></span><span class="org-org-block">&gt;</span>
+<span class="org-org-block">&lt;</span><span class="org-org-block"><span class="org-function-name">div</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-variable-name">class</span></span><span class="org-org-block">=</span><span class="org-org-block"><span class="org-string">'abstract'</span></span><span class="org-org-block">&gt;</span>
+<span class="org-org-block">  &lt;</span><span class="org-org-block"><span class="org-function-name">h2</span></span><span class="org-org-block">&gt;</span><span class="org-org-block"><span class="org-underline"><span class="org-bold-italic">About me</span></span></span><span class="org-org-block">&lt;/</span><span class="org-org-block"><span class="org-function-name">h2</span></span><span class="org-org-block">&gt;</span>
+<span class="org-org-block">  I'm a Computer Science Honours student at the University of Queensland interested in high performance computing, lisps, and functional programming. I mainly write Cython in Emacs for my day job and am working computer algebra systems for my thesis. </span>
+<span class="org-org-block">&lt;/</span><span class="org-org-block"><span class="org-function-name">div</span></span><span class="org-org-block">&gt;</span>
+<span class="org-org-block">&lt;/</span><span class="org-org-block"><span class="org-function-name">div</span></span><span class="org-org-block">&gt;</span>
+<span class="org-org-block-end-line">#+end_export</span>
+
+This is a mono-page of everything here (although not much). I prefer being able to scroll and search through web pages in their entirety.
 
 Here's a list of things on this page
 <span class="org-org-block-begin-line">#+begin_src emacs-lisp :exports results :results value html</span>
@@ -598,11 +603,7 @@ Here's a list of things on this page
 <span class="org-org-block">&lt;/</span><span class="org-org-block"><span class="org-function-name">div</span></span><span class="org-org-block">&gt;</span>
 <span class="org-org-block-end-line">#+end_export</span>
 
-Even got some math
-
-\begin{equation}
-\sum^n_{i=1} i^2
-\end{equation}
+Pages can be narrowed to by clicking on their respective titles.
 
 <span class="org-org-block-begin-line">#+begin_src emacs-lisp :exports results :results value html</span>
 <span class="org-org-block">  (string-join `(</span><span class="org-org-block"><span class="org-string">"&lt;div&gt;"</span></span><span class="org-org-block"> ,inline-html-publish-subpage-marker </span><span class="org-org-block"><span class="org-string">"&lt;/div&gt;"</span></span><span class="org-org-block">) </span><span class="org-org-block"><span class="org-string">"\n"</span></span><span class="org-org-block">)</span>
@@ -614,6 +615,8 @@ Even got some math
 <span class="org-org-block"><span class="org-comment-delimiter">&lt;!-- </span></span><span class="org-org-block"><span class="org-comment">Inline html subpage marker</span></span><span class="org-org-block"><span class="org-comment-delimiter"> --&gt;</span></span>
 <span class="org-org-block">&lt;/</span><span class="org-org-block"><span class="org-function-name">div</span></span><span class="org-org-block">&gt;</span>
 <span class="org-org-block-end-line">#+end_export</span>
+
+Something's in <span class="org-org-verbatim">=org-publish=</span> are just hard coded and you cannot configure them, one such thing is the detection of $\LaTeX$ fragments to determine if the <span class="org-org-verbatim">=mathjax=</span> scripts should be included. Because I'm inserting the subpages myself the <span class="org-org-verbatim">=mathjax=</span> scripts in them don't apply. So there's one down here to make sure they work on the mono-page.
 </pre>
 </div>
 </div>

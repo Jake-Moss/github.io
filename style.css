@@ -9,8 +9,13 @@
 }
 
 .centred-container {
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.abstract {
+    margin-top: 0em;
+    max-width: 80ch;
 }
 
 body {

@@ -119,9 +119,7 @@ ignored."
 Merges the `:inline-plist' with the plist of `:inline-components' in PLIST"
   (interactive)
   (let* ((org-inhibit-startup t)
-         (org-html-preamble-format `(("en" ,(concat
-                                             "<h1 class='author'>%a</h1>"
-                                             "<div class='abstract'><h2>About me</h2>test</div>"))))
+         (org-html-preamble-format `(("en" "<h1 class='author'>%a</h1>")))
          (org-html-postamble-format `(("en" ,(concat
                                               "<p class=\"author\">Date: %T</p>"
                                               "<p class=\"author\">%c</p>"))))
