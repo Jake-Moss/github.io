@@ -1,3 +1,5 @@
+#+OPTIONS: title:nil
+#+title:Jake Moss --- Mono-page
 The index page [[file:article.org][article page]]
 
 Here's a list of things on this page

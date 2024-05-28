@@ -13,7 +13,6 @@
 (defvar base-directory (expand-file-name "~/Projects/github.io/"))
 (defvar public-directory (file-name-concat base-directory "docs"))
 
-(defvar inline-html-publish-buffer nil)
 (defvar inline-html-publish-index-subpages nil)
 (defvar inline-html-publish-toc-marker "<!-- Inline html toc marker -->")
 (defvar inline-html-publish-subpage-marker "<!-- Inline html subpage marker -->")
@@ -60,7 +59,7 @@
         ("static"
          :base-directory ,base-directory
          :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-         :exclude "public"
+         :exclude "docs"
          :publishing-directory ,public-directory
          :recursive t
          :publishing-function org-publish-attachment)
@@ -79,6 +78,8 @@
         ("site" :components ("index" "contents" "static"))))
 
 (defmacro with-tag (tag attribute-alist &rest body)
+  "Insert <TAG `attributes'>, execute BODY, then insert </TAG>.
+ATTRIBUTE-ALIST's key-value pairs are converted into HTML attributes."
   (declare (indent 1) (debug t))
   (let ((attribute-list (gensym "attribute-list"))
         (attributes (gensym "attributes")))
@@ -90,6 +91,8 @@
        (insert (concat "</" ,tag ">")))))
 
 (defun inline-html-publish-index (plist filename pub-dir)
+  "Build a mono-page from FILENAME and `inline-html-publish-index-subpages'.
+Merges the `:inline-plist' with the plist of `:inline-components' in PLIST"
   (interactive)
   (let* ((org-inhibit-startup t)
          (org-html-preamble-format `(("en" ,(concat
@@ -100,7 +103,11 @@
                                               "<p class=\"author\">%c</p>"))))
 	     (visiting (find-buffer-visiting filename))
 	     (work-buffer (or visiting (find-file-noselect filename)))
-         (output-filename (file-name-concat pub-dir (file-name-with-extension (org-publish-file-relative-name filename plist) ".html")))
+         (output-filename (file-name-concat
+                           pub-dir
+                           (file-name-with-extension
+                            (org-publish-file-relative-name filename plist)
+                            ".html")))
          (html-buffer (find-file-noselect output-filename nil t))
          (inline-plist (plist-get plist :inline-plist))
          (inline-projects (cl-loop
@@ -140,9 +147,10 @@
     (unless visiting (kill-buffer work-buffer))))
 
 (defun inline-html-publish (plist filename pub-dir)
-  "Publish FILENAME into `inline-html-publish-buffer'.
-Update the `:inline-components' in PLIST with `:inline-plist'.
-PUB-DIR is ignored."
+  "Publish FILENAME into `inline-html-publish-index-subpages'.
+Stored as (timestamp output-filename title html-string).  Update the
+`:inline-components' in PLIST with `:inline-plist'.  PUB-DIR is
+ignored."
   (interactive)
   (let* ((org-inhibit-startup t)
 	     (visiting (find-buffer-visiting filename))
@@ -171,8 +179,8 @@ PUB-DIR is ignored."
 
 (defun publish ()
   (interactive)
-  (org-html-htmlize-generate-css)
-  (write-region nil nil "org-htmlize-style.css")
+  ;; (org-html-htmlize-generate-css)
+  ;; (write-region nil nil "org-htmlize-style.css")
   (org-publish "site" t))
 
 (provide 'publish)

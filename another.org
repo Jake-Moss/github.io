@@ -1,3 +1,0 @@
-#+title: another articles title
-* Another article
-Woah this is kind cool
