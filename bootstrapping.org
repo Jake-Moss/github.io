@@ -3,7 +3,7 @@
 #+PROPERTY: header-args:emacs-lisp :tangle publish.el
 #+PROPERTY: header-args:sh :eval no
 
-I used to have a pretty standard Jekyll theme as this web page. I'd hacked on it a bit and added support for [[https://orgmode.org/][Org Mode]] being the Emacs user I am, but after getting it up and running I promptly lost interest. Will the same thing happen to this page? Yeah probably. Either way, semester lectures just ended for me and I got a spur of motivation to get something going again. Specifically to try out [[https://docs.racket-lang.org/pollen/index.html][Pollen]]. Which describes itself as
+I used to have a pretty standard Jekyll theme as this web page. I'd hacked on it a bit and added support for [[https://orgmode.org/][Org Mode]] being the Emacs user I am, but after getting it up and running I promptly lost interest. Will the same thing happen to this page? Yeah probably. Either way, lectures just ended for another semester and I got a spur of motivation to get something going again. Specifically to try out [[https://docs.racket-lang.org/pollen/index.html][Pollen]]. Which describes itself as
 #+begin_quote
 [...] a publishing system that helps authors make functional and beautiful digital books.
 
@@ -69,7 +69,7 @@ First, we'll do some house keeping, I don't want these packages in my main =init
     :ensure t)
 #+end_src
 
-I use a few custom variables as well. =inline-html-publish-index-subpages= is a bit interesting because I wanted to generate a mono-page as well as the individual pages I need to have a custom publishing function and I need to store the subpages for addition to the mono-page.
+I use a few custom variables as well. =inline-html-publish-index-subpages= is a bit interesting, because I wanted to generate a mono-page as well as the individual pages I needed to have a custom publishing function, and I need to store the subpages for addition to the mono-page.
 The =-marker= variables are used to mark where some of the table of contents and subpages should be inserted. It's a bit of a hack I know I know but it works just fine.
 #+begin_src emacs-lisp
   (defvar inline-html-publish-index-subpages nil)
@@ -90,7 +90,7 @@ I also need to configure some generic =org-html= variables.
                        "<link rel='stylesheet' type='text/css' href='style.css'>"))
 #+end_src
 
-The real meat of the =org-publish= system is the =org-publish-project-alist= variable, it defines what files should be published and how with some knobs to fiddle with. This is a pretty boring one, we only have
+The real meat of the =org-publish= system is the =org-publish-project-alist= variable, it defines what files should be published and how. This is a pretty boring one, we only have
 - ="contens":= recursively publish any file ending in =.org= (except =index.org=) in the =base-directory= to the =public-directory= with the =org-html-publish-to-html= function.
 - ="static":= just copies some common resources to the =public-directory=.
 - ="index":= is a little more interesting. It's very similar to ="contents"= but use my =inline-html-publish-index= function to publish the =index.org= file.
@@ -108,6 +108,7 @@ The real meat of the =org-publish= system is the =org-publish-project-alist= var
           ("static"
            :base-directory ,base-directory
            :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+           :include ("CNAME")
            :exclude "docs"
            :publishing-directory ,public-directory
            :recursive t
@@ -180,7 +181,7 @@ The previously mentioned =inline-html-publish= function works by getting the to-
       (unless visiting (kill-buffer work-buffer))))
 #+end_src
 
-To the "publish" the =index.org= file I use my =inline-html-publish-index= function. It first merges the properties for the components from =:inline-components= with =:inline-plist= and does some other setup-related tasks. Then publishes the =index.org= file to the =html-buffer= buffer, followed up publishing the =:inline-components= with the now updated project alist.
+To the "publish" the =index.org= file it uses my =inline-html-publish-index= function. It first merges the properties for the components from =:inline-components= with =:inline-plist= and does some other setup-related tasks. Then publishes the =index.org= file to the =html-buffer= buffer, followed up publishing the =:inline-components= with the now updated project alist.
 #+begin_src emacs-lisp
   (defun inline-html-publish-index (plist filename pub-dir)
     "Build a mono-page from FILENAME and `inline-html-publish-index-subpages'.
@@ -240,8 +241,6 @@ The =:inline-components= uses the =inline-html-publish= function which populates
 
 And that's it.
 
-I think it works quite well and just shows how extensive the =org-publish= system is.
-
 ** Wait wait where did those markers come from?
-Oh yeah, they're just embedded as exported =HTML= blocks in the =index.org= file. Here's what that looks like
+They're just embedded as exported =HTML= blocks in the =index.org= file. Here's what that looks like
 #+include: index.org src org

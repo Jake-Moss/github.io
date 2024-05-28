@@ -37,4 +37,4 @@ Pages can be narrowed to by clicking on their respective titles.
 </div>
 #+end_export
 
-Something's in =org-publish= are just hard coded and you cannot configure them, one such thing is the detection of $\LaTeX$ fragments to determine if the =mathjax= scripts should be included. Because I'm inserting the subpages myself the =mathjax= scripts in them don't apply. So there's one down here to make sure they work on the mono-page.
+Some things in =org-publish= are just hard coded and you cannot configure them, one such thing is the detection of $\LaTeX$ fragments to determine if the =mathjax= scripts should be included. Because I'm inserting the subpages myself the =mathjax= scripts in them don't apply. So there's one down here to make sure they work on the mono-page.

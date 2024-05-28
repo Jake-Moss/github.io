@@ -50,6 +50,7 @@
         ("static"
          :base-directory ,base-directory
          :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+         :include ("CNAME")
          :exclude "docs"
          :publishing-directory ,public-directory
          :recursive t
