@@ -8,8 +8,8 @@ I used to have a pretty standard Jekyll theme as this web page. I'd hacked on it
 [...] a publishing system that helps authors make functional and beautiful digital books.
 
 At the core of Pollen is an argument:
-   - Digital books should be the best books we’ve ever had. So far, they’re not even close.
-   - Because digital books are software, an author shouldn’t think of a book as merely data. The book is a program.
+   - Digital books should be the best books weve ever had. So far, they're not even close.
+   - Because digital books are software, an author shouldn't think of a book as merely data. The book is a program.
    - The way we make digital books better than their predecessors is by exploiting this programmability.
 --- Matthew Butterick, Pollen: the book is a program
 #+end_quote
@@ -85,9 +85,9 @@ I also need to configure some generic =org-html= variables.
         org-html-htmlize-output-type 'css
         org-html-postamble t
         org-html-head (concat
-                       "<link rel='stylesheet' type='text/css' href='https://latex.now.sh/style.css'>"
-                       "<link rel='stylesheet' type='text/css' href='org-htmlize-style.css'>"
-                       "<link rel='stylesheet' type='text/css' href='style.css'>"))
+                       "<link rel='stylesheet' type='text/css' href='https://latex.now.sh/style.css'/>"
+                       "<link rel='stylesheet' type='text/css' href='org-htmlize-style.css'/>"
+                       "<link rel='stylesheet' type='text/css' href='style.css'/>"))
 #+end_src
 
 The real meat of the =org-publish= system is the =org-publish-project-alist= variable, it defines what files should be published and how. This is a pretty boring one, we only have
@@ -103,6 +103,10 @@ The real meat of the =org-publish= system is the =org-publish-project-alist= var
            :publishing-directory ,public-directory
            :recursive t
            :publishing-function org-html-publish-to-html
+           :html-postamble ,(concat
+                             "<p class=\"author\">%a</p>"
+                             "<p class=\"author\">Date: %T</p>"
+                             "<p class=\"author\">%c</p>")
            :headline-levels 4
            :auto-preamble t)
           ("static"
@@ -168,7 +172,7 @@ The previously mentioned =inline-html-publish= function works by getting the to-
       (with-current-buffer temp-buffer
         (when title
           (insert (format inline-html-publish-page-format
-                          title
+                          (file-name-sans-extension output-filename)
                           output-filename
                           title)))
         (push `(,(org-publish-cache-mtime-of-src filename)
@@ -224,7 +228,7 @@ To the "publish" the =index.org= file it uses my =inline-html-publish-index= fun
         (with-tag "ul" nil
                   (cl-loop for (html-filename title html) in inline-html-publish-index-subpages do
                            (with-tag "li" nil
-                                     (with-tag "a" `(("href" . ,(concat "#" title)))
+                                     (with-tag "a" `(("href" . ,(concat "#" (file-name-sans-extension html-filename))))
                                                (insert title)))))
 
         (goto-char (point-min))

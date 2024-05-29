@@ -33,9 +33,9 @@
       org-html-htmlize-output-type 'css
       org-html-postamble t
       org-html-head (concat
-                     "<link rel='stylesheet' type='text/css' href='https://latex.now.sh/style.css'>"
-                     "<link rel='stylesheet' type='text/css' href='org-htmlize-style.css'>"
-                     "<link rel='stylesheet' type='text/css' href='style.css'>"))
+                     "<link rel='stylesheet' type='text/css' href='https://latex.now.sh/style.css'/>"
+                     "<link rel='stylesheet' type='text/css' href='org-htmlize-style.css'/>"
+                     "<link rel='stylesheet' type='text/css' href='style.css'/>"))
 
 (setq org-publish-project-alist
       `(("contents"
@@ -45,6 +45,10 @@
          :publishing-directory ,public-directory
          :recursive t
          :publishing-function org-html-publish-to-html
+         :html-postamble ,(concat
+                           "<p class=\"author\">%a</p>"
+                           "<p class=\"author\">Date: %T</p>"
+                           "<p class=\"author\">%c</p>")
          :headline-levels 4
          :auto-preamble t)
         ("static"
@@ -103,7 +107,7 @@ ignored."
     (with-current-buffer temp-buffer
       (when title
         (insert (format inline-html-publish-page-format
-                        title
+                        (file-name-sans-extension output-filename)
                         output-filename
                         title)))
       (push `(,(org-publish-cache-mtime-of-src filename)
@@ -156,7 +160,7 @@ Merges the `:inline-plist' with the plist of `:inline-components' in PLIST"
       (with-tag "ul" nil
                 (cl-loop for (html-filename title html) in inline-html-publish-index-subpages do
                          (with-tag "li" nil
-                                   (with-tag "a" `(("href" . ,(concat "#" title)))
+                                   (with-tag "a" `(("href" . ,(concat "#" (file-name-sans-extension html-filename))))
                                              (insert title)))))
 
       (goto-char (point-min))

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-05-29 Wed 09:55 -->
+<!-- 2024-05-29 Wed 10:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Jake Moss &#x2014; Mono-page</title>
@@ -193,7 +193,7 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
-<link rel='stylesheet' type='text/css' href='https://latex.now.sh/style.css'><link rel='stylesheet' type='text/css' href='org-htmlize-style.css'><link rel='stylesheet' type='text/css' href='style.css'>
+<link rel='stylesheet' type='text/css' href='https://latex.now.sh/style.css'/><link rel='stylesheet' type='text/css' href='org-htmlize-style.css'/><link rel='stylesheet' type='text/css' href='style.css'/>
 <script>
   window.MathJax = {
     tex: {
@@ -247,7 +247,7 @@ This is a mono-page of everything here (although not much). I prefer being able 
 Here's a list of things on this page
 </p>
 <div>
-<!-- Inline html toc marker --><ul ><li ><a href='#The article is the publishing script?'>The article is the publishing script?</a></li></ul>
+<!-- Inline html toc marker --><ul ><li ><a href='#bootstrapping'>The article is the publishing script?</a></li></ul>
 </div>
 
 <p>
@@ -255,18 +255,18 @@ Pages can be narrowed to by clicking on their respective titles.
 </p>
 
 <div>
-<!-- Inline html subpage marker --><div class='subpage'><h1 class='subpage-title' id='The article is the publishing script?'><a href='bootstrapping.html'>The article is the publishing script?</a></h1><div id="table-of-contents" role="doc-toc">
+<!-- Inline html subpage marker --><div class='subpage'><h1 class='subpage-title' id='bootstrapping'><a href='bootstrapping.html'>The article is the publishing script?</a></h1><div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc89186d">1. So what's so special about this?</a></li>
-<li><a href="#org4c5254d">2. <code>org-export</code> and <code>org-publish</code></a></li>
-<li><a href="#orge2dc3bf">3. What about the so-called publishing script being an article?</a></li>
-<li><a href="#org606b009">4. The meat of it</a>
+<li><a href="#org3a814b8">1. So what's so special about this?</a></li>
+<li><a href="#orgf9226e2">2. <code>org-export</code> and <code>org-publish</code></a></li>
+<li><a href="#org7a267b0">3. What about the so-called publishing script being an article?</a></li>
+<li><a href="#orgd4b8dc3">4. The meat of it</a>
 <ul>
-<li><a href="#org466e8ca">4.1. Setup, packages, and variables</a></li>
-<li><a href="#org9d3bd53">4.2. Functions</a></li>
-<li><a href="#orgc4e9f2d">4.3. Wait wait where did those markers come from?</a></li>
+<li><a href="#orge00ba2b">4.1. Setup, packages, and variables</a></li>
+<li><a href="#org893965d">4.2. Functions</a></li>
+<li><a href="#orga1992c4">4.3. Wait wait where did those markers come from?</a></li>
 </ul>
 </li>
 </ul>
@@ -284,8 +284,8 @@ I used to have a pretty standard Jekyll theme as this web page. I'd hacked on it
 At the core of Pollen is an argument:
 </p>
 <ul class="org-ul">
-<li>Digital books should be the best books weve ever had. So far, theyre not even close.</li>
-<li>Because digital books are software, an author shouldnt think of a book as merely data. The book is a program.</li>
+<li>Digital books should be the best books weve ever had. So far, they're not even close.</li>
+<li>Because digital books are software, an author shouldn't think of a book as merely data. The book is a program.</li>
 <li>The way we make digital books better than their predecessors is by exploiting this programmability.</li>
 </ul>
 <p>
@@ -297,8 +297,8 @@ At the core of Pollen is an argument:
 While it clearly states that it's for digital books, it targets <code>HTML</code> and looked pretty cool so I gave it a shot. If you've seen the bottom of this page you may notice it was created with <code>org-mode</code>, so clearly, the <code>pollen</code> attempt didn't make it. While it's a very cool system, I had issues with the export behaving oddly, paragraph tags were showing up where they shouldn't have and it became difficult to fine-tune the export, despite having immense control of the output with the <a href="https://docs.racket-lang.org/pollen/third-tutorial.html"><code>pollen markup</code></a> format. As a templating system, the <a href="https://docs.racket-lang.org/pollen/first-tutorial.html#(part._.Inserting_variables_within_.C.S.S)"><code>pollen preprocessor</code></a> could be quite nice. I can see being able to inject arbitrary Racket code into anything text-based as something somebody needs for some reason.
 </p>
 
-<div id="outline-container-orgc89186d" class="outline-2">
-<h2 id="orgc89186d"><span class="section-number-2">1.</span> So what's so special about this?</h2>
+<div id="outline-container-org3a814b8" class="outline-2">
+<h2 id="org3a814b8"><span class="section-number-2">1.</span> So what's so special about this?</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Well not much. I've used a lot of <code>org-mode</code> in the past and even attempted to do this once before. It's quite a nice markup language, I've personally used it for organising notes, managing TODO lists, planning projects, writing assignments, scheduling, agenda views, tagging, and exporting to various formats. It also supports literate programming, tables, and extensive customisation with Emacs Lisp. The literate programming has been quite useful for assignments that require lots of in-document code and outputs.
@@ -310,8 +310,8 @@ One thing that <code>org-mode</code> has that I think <code>markdown</code> and 
 </div>
 </div>
 
-<div id="outline-container-org4c5254d" class="outline-2">
-<h2 id="org4c5254d"><span class="section-number-2">2.</span> <code>org-export</code> and <code>org-publish</code></h2>
+<div id="outline-container-orgf9226e2" class="outline-2">
+<h2 id="orgf9226e2"><span class="section-number-2">2.</span> <code>org-export</code> and <code>org-publish</code></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 My lecturers certainly aren't interested in reading my assignments in a plain-text markup language almost exclusively supported by a <a href="https://www.gnu.org/software/emacs/">text editor first released in 1985</a>. Fortunately, <code>org-mode</code> has excellent support exporting documents to other formats including <code>HTML</code>, and \(\LaTeX\). On top of this <code>org-publish</code> adds support for processes a set of files, potentiality exporting, and publishing them. These systems are highly configurable and featureful.
@@ -323,8 +323,8 @@ All pages here (including the mono-page) are generated from a set of <code>.org<
 </div>
 </div>
 
-<div id="outline-container-orge2dc3bf" class="outline-2">
-<h2 id="orge2dc3bf"><span class="section-number-2">3.</span> What about the so-called publishing script being an article?</h2>
+<div id="outline-container-org7a267b0" class="outline-2">
+<h2 id="org7a267b0"><span class="section-number-2">3.</span> What about the so-called publishing script being an article?</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Yeah, so this article isn't <i>really</i> the publishing script. Specifically the <code>bootstrappaing.org</code> file is <i>tangled</i> to <code>publish.el</code>, which is then executed. Tangling is the process of extracting source code from a document expanding, merging, and transforming it. Org then recomposes them into one or more separate files.
@@ -350,12 +350,12 @@ which isn't much of a change to be fair, but it's the principle that matters.
 </div>
 </div>
 
-<div id="outline-container-org606b009" class="outline-2">
-<h2 id="org606b009"><span class="section-number-2">4.</span> The meat of it</h2>
+<div id="outline-container-orgd4b8dc3" class="outline-2">
+<h2 id="orgd4b8dc3"><span class="section-number-2">4.</span> The meat of it</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org466e8ca" class="outline-3">
-<h3 id="org466e8ca"><span class="section-number-3">4.1.</span> Setup, packages, and variables</h3>
+<div id="outline-container-orge00ba2b" class="outline-3">
+<h3 id="orge00ba2b"><span class="section-number-3">4.1.</span> Setup, packages, and variables</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 First, we'll do some house keeping, I don't want these packages in my main <code>init.el</code>, so we'll move the package directory and <code>require</code> the built-in things I'll need.
@@ -409,9 +409,9 @@ I also need to configure some generic <code>org-html</code> variables.
       org-html-htmlize-output-type 'css
       org-html-postamble t
       org-html-head (concat
-                     <span class="org-string">"&lt;link rel='</span><span class="org-string"><span class="org-constant">stylesheet</span></span><span class="org-string">' type='</span><span class="org-string"><span class="org-constant">text/css</span></span><span class="org-string">' href='</span><span class="org-string"><span class="org-constant">https://latex.now.sh/style.css</span></span><span class="org-string">'&gt;"</span>
-                     <span class="org-string">"&lt;link rel='</span><span class="org-string"><span class="org-constant">stylesheet</span></span><span class="org-string">' type='</span><span class="org-string"><span class="org-constant">text/css</span></span><span class="org-string">' href='</span><span class="org-string"><span class="org-constant">org-htmlize-style.css</span></span><span class="org-string">'&gt;"</span>
-                     <span class="org-string">"&lt;link rel='</span><span class="org-string"><span class="org-constant">stylesheet</span></span><span class="org-string">' type='</span><span class="org-string"><span class="org-constant">text/css</span></span><span class="org-string">' href='</span><span class="org-string"><span class="org-constant">style.css</span></span><span class="org-string">'&gt;"</span>))
+                     <span class="org-string">"&lt;link rel='</span><span class="org-string"><span class="org-constant">stylesheet</span></span><span class="org-string">' type='</span><span class="org-string"><span class="org-constant">text/css</span></span><span class="org-string">' href='</span><span class="org-string"><span class="org-constant">https://latex.now.sh/style.css</span></span><span class="org-string">'/&gt;"</span>
+                     <span class="org-string">"&lt;link rel='</span><span class="org-string"><span class="org-constant">stylesheet</span></span><span class="org-string">' type='</span><span class="org-string"><span class="org-constant">text/css</span></span><span class="org-string">' href='</span><span class="org-string"><span class="org-constant">org-htmlize-style.css</span></span><span class="org-string">'/&gt;"</span>
+                     <span class="org-string">"&lt;link rel='</span><span class="org-string"><span class="org-constant">stylesheet</span></span><span class="org-string">' type='</span><span class="org-string"><span class="org-constant">text/css</span></span><span class="org-string">' href='</span><span class="org-string"><span class="org-constant">style.css</span></span><span class="org-string">'/&gt;"</span>))
 </pre>
 </div>
 
@@ -432,6 +432,10 @@ The real meat of the <code>org-publish</code> system is the <code>org-publish-pr
          <span class="org-builtin">:publishing-directory</span> ,public-directory
          <span class="org-builtin">:recursive</span> t
          <span class="org-builtin">:publishing-function</span> org-html-publish-to-html
+         <span class="org-builtin">:html-postamble</span> ,(concat
+                           <span class="org-string">"&lt;p class=\"author\"&gt;%a&lt;/p&gt;"</span>
+                           <span class="org-string">"&lt;p class=\"author\"&gt;Date: %T&lt;/p&gt;"</span>
+                           <span class="org-string">"&lt;p class=\"author\"&gt;%c&lt;/p&gt;"</span>)
          <span class="org-builtin">:headline-levels</span> 4
          <span class="org-builtin">:auto-preamble</span> t)
         (<span class="org-string">"static"</span>
@@ -462,8 +466,8 @@ The real meat of the <code>org-publish</code> system is the <code>org-publish-pr
 </p>
 </div>
 </div>
-<div id="outline-container-org9d3bd53" class="outline-3">
-<h3 id="org9d3bd53"><span class="section-number-3">4.2.</span> Functions</h3>
+<div id="outline-container-org893965d" class="outline-3">
+<h3 id="org893965d"><span class="section-number-3">4.2.</span> Functions</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 I wrote a small helper macro to make writing some <code>HTML</code> tags easier. It's not particularly fancy but it does the job.
@@ -509,7 +513,7 @@ The previously mentioned <code>inline-html-publish</code> function works by gett
     (<span class="org-keyword">with-current-buffer</span> temp-buffer
       (<span class="org-keyword">when</span> title
         (insert (format inline-html-publish-page-format
-                        title
+                        (file-name-sans-extension output-filename)
                         output-filename
                         title)))
       (<span class="org-keyword">push</span> `(,(org-publish-cache-mtime-of-src filename)
@@ -568,7 +572,7 @@ To the "publish" the <code>index.org</code> file it uses my <code>inline-html-pu
       (<span class="org-keyword">with-tag</span> <span class="org-string">"ul"</span> nil
                 (<span class="org-keyword">cl-loop</span> for (html-filename title html) in inline-html-publish-index-subpages do
                          (<span class="org-keyword">with-tag</span> <span class="org-string">"li"</span> nil
-                                   (<span class="org-keyword">with-tag</span> <span class="org-string">"a"</span> `((<span class="org-string">"href"</span> . ,(concat <span class="org-string">"#"</span> title)))
+                                   (<span class="org-keyword">with-tag</span> <span class="org-string">"a"</span> `((<span class="org-string">"href"</span> . ,(concat <span class="org-string">"#"</span> (file-name-sans-extension html-filename))))
                                              (insert title)))))
 
       (goto-char (point-min))
@@ -592,8 +596,8 @@ And that's it.
 </div>
 </div>
 
-<div id="outline-container-orgc4e9f2d" class="outline-3">
-<h3 id="orgc4e9f2d"><span class="section-number-3">4.3.</span> Wait wait where did those markers come from?</h3>
+<div id="outline-container-orga1992c4" class="outline-3">
+<h3 id="orga1992c4"><span class="section-number-3">4.3.</span> Wait wait where did those markers come from?</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 They're just embedded as exported <code>HTML</code> blocks in the <code>index.org</code> file. Here's what that looks like
@@ -652,7 +656,7 @@ Some things in <code>org-publish</code> are just hard coded and you cannot confi
 </p>
 </div>
 <div id="postamble" class="status">
-<p class="author">Date: 2024-05-29 Wed 09:55</p><p class="author"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.3 (<a href="https://orgmode.org">Org</a> mode 9.6.15)</p>
+<p class="author">Date: 2024-05-29 Wed 10:39</p><p class="author"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.3 (<a href="https://orgmode.org">Org</a> mode 9.6.15)</p>
 </div>
 </body>
 </html>

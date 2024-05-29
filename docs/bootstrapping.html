@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-05-29 Wed 09:55 -->
+<!-- 2024-05-29 Wed 10:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The article is the publishing script?</title>
@@ -193,7 +193,7 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
-<link rel='stylesheet' type='text/css' href='https://latex.now.sh/style.css'><link rel='stylesheet' type='text/css' href='org-htmlize-style.css'><link rel='stylesheet' type='text/css' href='style.css'>
+<link rel='stylesheet' type='text/css' href='https://latex.now.sh/style.css'/><link rel='stylesheet' type='text/css' href='org-htmlize-style.css'/><link rel='stylesheet' type='text/css' href='style.css'/>
 <script>
   window.MathJax = {
     tex: {
@@ -259,8 +259,8 @@ I used to have a pretty standard Jekyll theme as this web page. I'd hacked on it
 At the core of Pollen is an argument:
 </p>
 <ul class="org-ul">
-<li>Digital books should be the best books we’ve ever had. So far, they’re not even close.</li>
-<li>Because digital books are software, an author shouldn’t think of a book as merely data. The book is a program.</li>
+<li>Digital books should be the best books weve ever had. So far, they're not even close.</li>
+<li>Because digital books are software, an author shouldn't think of a book as merely data. The book is a program.</li>
 <li>The way we make digital books better than their predecessors is by exploiting this programmability.</li>
 </ul>
 <p>
@@ -384,9 +384,9 @@ I also need to configure some generic <code>org-html</code> variables.
       org-html-htmlize-output-type 'css
       org-html-postamble t
       org-html-head (concat
-                     <span class="org-string">"&lt;link rel='</span><span class="org-string"><span class="org-constant">stylesheet</span></span><span class="org-string">' type='</span><span class="org-string"><span class="org-constant">text/css</span></span><span class="org-string">' href='</span><span class="org-string"><span class="org-constant">https://latex.now.sh/style.css</span></span><span class="org-string">'&gt;"</span>
-                     <span class="org-string">"&lt;link rel='</span><span class="org-string"><span class="org-constant">stylesheet</span></span><span class="org-string">' type='</span><span class="org-string"><span class="org-constant">text/css</span></span><span class="org-string">' href='</span><span class="org-string"><span class="org-constant">org-htmlize-style.css</span></span><span class="org-string">'&gt;"</span>
-                     <span class="org-string">"&lt;link rel='</span><span class="org-string"><span class="org-constant">stylesheet</span></span><span class="org-string">' type='</span><span class="org-string"><span class="org-constant">text/css</span></span><span class="org-string">' href='</span><span class="org-string"><span class="org-constant">style.css</span></span><span class="org-string">'&gt;"</span>))
+                     <span class="org-string">"&lt;link rel='</span><span class="org-string"><span class="org-constant">stylesheet</span></span><span class="org-string">' type='</span><span class="org-string"><span class="org-constant">text/css</span></span><span class="org-string">' href='</span><span class="org-string"><span class="org-constant">https://latex.now.sh/style.css</span></span><span class="org-string">'/&gt;"</span>
+                     <span class="org-string">"&lt;link rel='</span><span class="org-string"><span class="org-constant">stylesheet</span></span><span class="org-string">' type='</span><span class="org-string"><span class="org-constant">text/css</span></span><span class="org-string">' href='</span><span class="org-string"><span class="org-constant">org-htmlize-style.css</span></span><span class="org-string">'/&gt;"</span>
+                     <span class="org-string">"&lt;link rel='</span><span class="org-string"><span class="org-constant">stylesheet</span></span><span class="org-string">' type='</span><span class="org-string"><span class="org-constant">text/css</span></span><span class="org-string">' href='</span><span class="org-string"><span class="org-constant">style.css</span></span><span class="org-string">'/&gt;"</span>))
 </pre>
 </div>
 
@@ -407,6 +407,10 @@ The real meat of the <code>org-publish</code> system is the <code>org-publish-pr
          <span class="org-builtin">:publishing-directory</span> ,public-directory
          <span class="org-builtin">:recursive</span> t
          <span class="org-builtin">:publishing-function</span> org-html-publish-to-html
+         <span class="org-builtin">:html-postamble</span> ,(concat
+                           <span class="org-string">"&lt;p class=\"author\"&gt;%a&lt;/p&gt;"</span>
+                           <span class="org-string">"&lt;p class=\"author\"&gt;Date: %T&lt;/p&gt;"</span>
+                           <span class="org-string">"&lt;p class=\"author\"&gt;%c&lt;/p&gt;"</span>)
          <span class="org-builtin">:headline-levels</span> 4
          <span class="org-builtin">:auto-preamble</span> t)
         (<span class="org-string">"static"</span>
@@ -484,7 +488,7 @@ The previously mentioned <code>inline-html-publish</code> function works by gett
     (<span class="org-keyword">with-current-buffer</span> temp-buffer
       (<span class="org-keyword">when</span> title
         (insert (format inline-html-publish-page-format
-                        title
+                        (file-name-sans-extension output-filename)
                         output-filename
                         title)))
       (<span class="org-keyword">push</span> `(,(org-publish-cache-mtime-of-src filename)
@@ -543,7 +547,7 @@ To the "publish" the <code>index.org</code> file it uses my <code>inline-html-pu
       (<span class="org-keyword">with-tag</span> <span class="org-string">"ul"</span> nil
                 (<span class="org-keyword">cl-loop</span> for (html-filename title html) in inline-html-publish-index-subpages do
                          (<span class="org-keyword">with-tag</span> <span class="org-string">"li"</span> nil
-                                   (<span class="org-keyword">with-tag</span> <span class="org-string">"a"</span> `((<span class="org-string">"href"</span> . ,(concat <span class="org-string">"#"</span> title)))
+                                   (<span class="org-keyword">with-tag</span> <span class="org-string">"a"</span> `((<span class="org-string">"href"</span> . ,(concat <span class="org-string">"#"</span> (file-name-sans-extension html-filename))))
                                              (insert title)))))
 
       (goto-char (point-min))
@@ -621,10 +625,7 @@ Some things in <span class="org-org-verbatim">=org-publish=</span> are just hard
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Jake Moss (<a href="mailto:jake@desktop">jake@desktop</a>)</p>
-<p class="date">Date: </p>
-<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.3 (<a href="https://orgmode.org">Org</a> mode 9.6.15)</p>
-<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="author">Jake Moss</p><p class="author">Date: 2024-05-29 Wed 10:39</p><p class="author"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.3 (<a href="https://orgmode.org">Org</a> mode 9.6.15)</p>
 </div>
 </body>
 </html>
