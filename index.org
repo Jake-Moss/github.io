@@ -5,7 +5,7 @@
 <div class='centred-container'>
 <div class='abstract'>
   <h2>About me</h2>
-  I'm a Computer Science Honours student at the University of Queensland interested in high performance computing, lisps, and functional programming. I mainly write Cython in Emacs for my day job and am working computer algebra systems for my thesis. 
+  I'm a Computer Science Honours student at the University of Queensland interested in high performance computing, lisps, and functional programming. I mainly write Cython in Emacs for my day job and am working on computer algebra systems for my thesis. 
 </div>
 </div>
 #+end_export

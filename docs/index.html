@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-05-29 Wed 10:39 -->
+<!-- 2024-07-29 Mon 01:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Jake Moss &#x2014; Mono-page</title>
@@ -235,7 +235,7 @@
 <div class='centred-container'>
 <div class='abstract'>
   <h2>About me</h2>
-  I'm a Computer Science Honours student at the University of Queensland interested in high performance computing, lisps, and functional programming. I mainly write Cython in Emacs for my day job and am working computer algebra systems for my thesis. 
+  I'm a Computer Science Honours student at the University of Queensland interested in high performance computing, lisps, and functional programming. I mainly write Cython in Emacs for my day job and am working on computer algebra systems for my thesis. 
 </div>
 </div>
 
@@ -259,14 +259,14 @@ Pages can be narrowed to by clicking on their respective titles.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3a814b8">1. So what's so special about this?</a></li>
-<li><a href="#orgf9226e2">2. <code>org-export</code> and <code>org-publish</code></a></li>
-<li><a href="#org7a267b0">3. What about the so-called publishing script being an article?</a></li>
-<li><a href="#orgd4b8dc3">4. The meat of it</a>
+<li><a href="#orge987452">1. So what's so special about this?</a></li>
+<li><a href="#org7d8e2d1">2. <code>org-export</code> and <code>org-publish</code></a></li>
+<li><a href="#org3b5893f">3. What about the so-called publishing script being an article?</a></li>
+<li><a href="#org3d6260c">4. The meat of it</a>
 <ul>
-<li><a href="#orge00ba2b">4.1. Setup, packages, and variables</a></li>
-<li><a href="#org893965d">4.2. Functions</a></li>
-<li><a href="#orga1992c4">4.3. Wait wait where did those markers come from?</a></li>
+<li><a href="#org53325b8">4.1. Setup, packages, and variables</a></li>
+<li><a href="#org3b35320">4.2. Functions</a></li>
+<li><a href="#org0d8f4e1">4.3. Wait wait where did those markers come from?</a></li>
 </ul>
 </li>
 </ul>
@@ -297,8 +297,8 @@ At the core of Pollen is an argument:
 While it clearly states that it's for digital books, it targets <code>HTML</code> and looked pretty cool so I gave it a shot. If you've seen the bottom of this page you may notice it was created with <code>org-mode</code>, so clearly, the <code>pollen</code> attempt didn't make it. While it's a very cool system, I had issues with the export behaving oddly, paragraph tags were showing up where they shouldn't have and it became difficult to fine-tune the export, despite having immense control of the output with the <a href="https://docs.racket-lang.org/pollen/third-tutorial.html"><code>pollen markup</code></a> format. As a templating system, the <a href="https://docs.racket-lang.org/pollen/first-tutorial.html#(part._.Inserting_variables_within_.C.S.S)"><code>pollen preprocessor</code></a> could be quite nice. I can see being able to inject arbitrary Racket code into anything text-based as something somebody needs for some reason.
 </p>
 
-<div id="outline-container-org3a814b8" class="outline-2">
-<h2 id="org3a814b8"><span class="section-number-2">1.</span> So what's so special about this?</h2>
+<div id="outline-container-orge987452" class="outline-2">
+<h2 id="orge987452"><span class="section-number-2">1.</span> So what's so special about this?</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Well not much. I've used a lot of <code>org-mode</code> in the past and even attempted to do this once before. It's quite a nice markup language, I've personally used it for organising notes, managing TODO lists, planning projects, writing assignments, scheduling, agenda views, tagging, and exporting to various formats. It also supports literate programming, tables, and extensive customisation with Emacs Lisp. The literate programming has been quite useful for assignments that require lots of in-document code and outputs.
@@ -310,8 +310,8 @@ One thing that <code>org-mode</code> has that I think <code>markdown</code> and 
 </div>
 </div>
 
-<div id="outline-container-orgf9226e2" class="outline-2">
-<h2 id="orgf9226e2"><span class="section-number-2">2.</span> <code>org-export</code> and <code>org-publish</code></h2>
+<div id="outline-container-org7d8e2d1" class="outline-2">
+<h2 id="org7d8e2d1"><span class="section-number-2">2.</span> <code>org-export</code> and <code>org-publish</code></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 My lecturers certainly aren't interested in reading my assignments in a plain-text markup language almost exclusively supported by a <a href="https://www.gnu.org/software/emacs/">text editor first released in 1985</a>. Fortunately, <code>org-mode</code> has excellent support exporting documents to other formats including <code>HTML</code>, and \(\LaTeX\). On top of this <code>org-publish</code> adds support for processes a set of files, potentiality exporting, and publishing them. These systems are highly configurable and featureful.
@@ -323,8 +323,8 @@ All pages here (including the mono-page) are generated from a set of <code>.org<
 </div>
 </div>
 
-<div id="outline-container-org7a267b0" class="outline-2">
-<h2 id="org7a267b0"><span class="section-number-2">3.</span> What about the so-called publishing script being an article?</h2>
+<div id="outline-container-org3b5893f" class="outline-2">
+<h2 id="org3b5893f"><span class="section-number-2">3.</span> What about the so-called publishing script being an article?</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Yeah, so this article isn't <i>really</i> the publishing script. Specifically the <code>bootstrappaing.org</code> file is <i>tangled</i> to <code>publish.el</code>, which is then executed. Tangling is the process of extracting source code from a document expanding, merging, and transforming it. Org then recomposes them into one or more separate files.
@@ -350,12 +350,12 @@ which isn't much of a change to be fair, but it's the principle that matters.
 </div>
 </div>
 
-<div id="outline-container-orgd4b8dc3" class="outline-2">
-<h2 id="orgd4b8dc3"><span class="section-number-2">4.</span> The meat of it</h2>
+<div id="outline-container-org3d6260c" class="outline-2">
+<h2 id="org3d6260c"><span class="section-number-2">4.</span> The meat of it</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orge00ba2b" class="outline-3">
-<h3 id="orge00ba2b"><span class="section-number-3">4.1.</span> Setup, packages, and variables</h3>
+<div id="outline-container-org53325b8" class="outline-3">
+<h3 id="org53325b8"><span class="section-number-3">4.1.</span> Setup, packages, and variables</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 First, we'll do some house keeping, I don't want these packages in my main <code>init.el</code>, so we'll move the package directory and <code>require</code> the built-in things I'll need.
@@ -466,8 +466,8 @@ The real meat of the <code>org-publish</code> system is the <code>org-publish-pr
 </p>
 </div>
 </div>
-<div id="outline-container-org893965d" class="outline-3">
-<h3 id="org893965d"><span class="section-number-3">4.2.</span> Functions</h3>
+<div id="outline-container-org3b35320" class="outline-3">
+<h3 id="org3b35320"><span class="section-number-3">4.2.</span> Functions</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 I wrote a small helper macro to make writing some <code>HTML</code> tags easier. It's not particularly fancy but it does the job.
@@ -596,8 +596,8 @@ And that's it.
 </div>
 </div>
 
-<div id="outline-container-orga1992c4" class="outline-3">
-<h3 id="orga1992c4"><span class="section-number-3">4.3.</span> Wait wait where did those markers come from?</h3>
+<div id="outline-container-org0d8f4e1" class="outline-3">
+<h3 id="org0d8f4e1"><span class="section-number-3">4.3.</span> Wait wait where did those markers come from?</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 They're just embedded as exported <code>HTML</code> blocks in the <code>index.org</code> file. Here's what that looks like
@@ -610,7 +610,7 @@ They're just embedded as exported <code>HTML</code> blocks in the <code>index.or
 <span class="org-org-block">&lt;</span><span class="org-org-block"><span class="org-function-name">div</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-variable-name">class</span></span><span class="org-org-block">=</span><span class="org-org-block"><span class="org-string">'centred-container'</span></span><span class="org-org-block">&gt;</span>
 <span class="org-org-block">&lt;</span><span class="org-org-block"><span class="org-function-name">div</span></span><span class="org-org-block"> </span><span class="org-org-block"><span class="org-variable-name">class</span></span><span class="org-org-block">=</span><span class="org-org-block"><span class="org-string">'abstract'</span></span><span class="org-org-block">&gt;</span>
 <span class="org-org-block">  &lt;</span><span class="org-org-block"><span class="org-function-name">h2</span></span><span class="org-org-block">&gt;</span><span class="org-org-block"><span class="org-underline"><span class="org-bold-italic">About me</span></span></span><span class="org-org-block">&lt;/</span><span class="org-org-block"><span class="org-function-name">h2</span></span><span class="org-org-block">&gt;</span>
-<span class="org-org-block">  I'm a Computer Science Honours student at the University of Queensland interested in high performance computing, lisps, and functional programming. I mainly write Cython in Emacs for my day job and am working computer algebra systems for my thesis. </span>
+<span class="org-org-block">  I'm a Computer Science Honours student at the University of Queensland interested in high performance computing, lisps, and functional programming. I mainly write Cython in Emacs for my day job and am working on computer algebra systems for my thesis. </span>
 <span class="org-org-block">&lt;/</span><span class="org-org-block"><span class="org-function-name">div</span></span><span class="org-org-block">&gt;</span>
 <span class="org-org-block">&lt;/</span><span class="org-org-block"><span class="org-function-name">div</span></span><span class="org-org-block">&gt;</span>
 <span class="org-org-block-end-line">#+end_export</span>
@@ -656,7 +656,7 @@ Some things in <code>org-publish</code> are just hard coded and you cannot confi
 </p>
 </div>
 <div id="postamble" class="status">
-<p class="author">Date: 2024-05-29 Wed 10:39</p><p class="author"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.3 (<a href="https://orgmode.org">Org</a> mode 9.6.15)</p>
+<p class="author">Date: 2024-07-29 Mon 01:06</p><p class="author"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.4 (<a href="https://orgmode.org">Org</a> mode 9.6.15)</p>
 </div>
 </body>
 </html>
