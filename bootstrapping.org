@@ -91,7 +91,7 @@ I also need to configure some generic =org-html= variables.
 #+end_src
 
 The real meat of the =org-publish= system is the =org-publish-project-alist= variable, it defines what files should be published and how. This is a pretty boring one, we only have
-- ="contens":= recursively publish any file ending in =.org= (except =index.org=) in the =base-directory= to the =public-directory= with the =org-html-publish-to-html= function.
+- ="contents":= recursively publish any file ending in =.org= (except =index.org=) in the =base-directory= to the =public-directory= with the =org-html-publish-to-html= function.
 - ="static":= just copies some common resources to the =public-directory=.
 - ="index":= is a little more interesting. It's very similar to ="contents"= but use my =inline-html-publish-index= function to publish the =index.org= file.
 #+begin_src emacs-lisp

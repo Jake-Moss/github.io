@@ -147,7 +147,8 @@ Merges the `:inline-plist' with the plist of `:inline-components' in PLIST"
     (with-current-buffer work-buffer
       (org-export-to-buffer 'html html-buffer nil nil nil nil))
 
-    (org-publish-projects inline-projects)
+    (let ((org-publish-use-timestamps-flag nil))
+     (org-publish-projects inline-projects))
 
     (setq inline-html-publish-index-subpages
           (mapcar #'cdr
