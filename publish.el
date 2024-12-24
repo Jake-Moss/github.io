@@ -68,7 +68,7 @@
          :exclude ".*"
          :include ("index.org")
          :publishing-directory ,public-directory
-         :recursive t
+         :recursive nil
          :headline-levels 4
          :auto-preamble t)
         ("site" :components ("index" "contents" "static"))))
@@ -148,7 +148,7 @@ Merges the `:inline-plist' with the plist of `:inline-components' in PLIST"
       (org-export-to-buffer 'html html-buffer nil nil nil nil))
 
     (let ((org-publish-use-timestamps-flag nil))
-     (org-publish-projects inline-projects))
+      (org-publish-projects inline-projects))
 
     (setq inline-html-publish-index-subpages
           (mapcar #'cdr

@@ -35,7 +35,7 @@ But it didn't use to be like that. To bootstrap the page I wrote a bog-standard 
 #+end_src
 During the writing of this article, I'm moving everything into here. Then I'll be able to
 #+begin_src sh
-  emacs -Q --batch -l org bootstrapping.org -f org-babel-tangle -l publish.el --eval '(org-publish "site" t)'
+  emacs -Q --batch -l org bootstrapping.org -f org-babel-tangle -l publish.el --eval '(org-publish "site")'
 #+end_src
 which isn't much of a change to be fair, but it's the principle that matters.
 
@@ -126,7 +126,7 @@ The real meat of the =org-publish= system is the =org-publish-project-alist= var
            :exclude ".*"
            :include ("index.org")
            :publishing-directory ,public-directory
-           :recursive t
+           :recursive nil
            :headline-levels 4
            :auto-preamble t)
           ("site" :components ("index" "contents" "static"))))
@@ -215,7 +215,8 @@ To the "publish" the =index.org= file it uses my =inline-html-publish-index= fun
       (with-current-buffer work-buffer
         (org-export-to-buffer 'html html-buffer nil nil nil nil))
 
-      (org-publish-projects inline-projects)
+      (let ((org-publish-use-timestamps-flag nil))
+        (org-publish-projects inline-projects))
 
       (setq inline-html-publish-index-subpages
             (mapcar #'cdr
