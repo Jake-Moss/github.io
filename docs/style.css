@@ -22,3 +22,7 @@ body {
     max-width: 120ch;
     font-family: 'Libertinus', Georgia, Cambria, 'Times New Roman', Times, serif;
 }
+
+img {
+  display: unset;
+}
