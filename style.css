@@ -26,3 +26,8 @@ body {
 img {
   display: unset;
 }
+
+a {
+    color:hsl(240 100% 33%);
+    text-decoration:none;
+}
